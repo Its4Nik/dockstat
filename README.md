@@ -6,15 +6,16 @@ It shows usage statistics like CPU, RAM and Network usage.
 
 ## 🖊️ WORK IN PROGRESS
 
-- WebUI for adding/removing hosts from the config of DockStatAPI
-- Sorting for Hosts
-- Custom host Tags like "Raspberry" or "Cloudserver"
-- Alert System using apprise or similar
-- better mobile UI
-- Host Stats (CPU Cores, Max RAM amount available and ram used by containers)
-- Custom Themes
-- More advanced sub pages.
-- Exlude network mode "host" from network stats or do smth else with it (not sure yet)
+- [X] Fix theme switcher
+- [ ] WebUI for adding/removing hosts from the config of DockStatAPI
+- [ ] Sorting for Hosts
+- [ ] Custom host Tags like "Raspberry" or "Cloudserver"
+- [ ] Alert System using apprise or similar
+- [ ] better mobile UI
+- [ ] Host Stats (CPU Cores, Max RAM amount available and ram used by containers)
+- [X] More themes
+- [ ] More advanced sub pages.
+- [ ] Exlude network mode "host" from network stats or do smth else with it (not sure yet)
 
 ## ⬇️ Installation using Docker:
 
