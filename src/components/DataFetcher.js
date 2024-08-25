@@ -13,7 +13,7 @@ const fetchConfig = async () => {
     }
 };
 
-const DataFetcher = ({ apihost, key, setData, setIsInitialLoad, data }) => {
+const DataFetcher = ({ apihost, apiKey, setData, setIsInitialLoad, data }) => {
     const [configData, setConfigData] = useState(null);
     const [isInitialLoad, setInitialLoad] = useState(true);
 
@@ -27,7 +27,7 @@ const DataFetcher = ({ apihost, key, setData, setIsInitialLoad, data }) => {
     }, []);
 
     useEffect(() => {
-        if (!configData || !apihost || !key) return;
+        if (!configData || !apihost || !apiKey) return;
 
         const fetchData = async () => {
             try {
@@ -56,7 +56,7 @@ const DataFetcher = ({ apihost, key, setData, setIsInitialLoad, data }) => {
         fetchData();
         const interval = setInterval(fetchData, 5000); // intervalTime can be managed via props or state if necessary
         return () => clearInterval(interval);
-    }, [apihost, key, data, setData, setIsInitialLoad, configData, isInitialLoad]);
+    }, [apihost, apiKey, data, setData, setIsInitialLoad, configData, isInitialLoad]);
 
     return null; // This component does not render anything
 };

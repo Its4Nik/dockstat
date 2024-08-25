@@ -14,7 +14,7 @@ function App() {
     const [theme, setTheme] = useState('');
     const [loadingTheme, setLoadingTheme] = useState(false);
     const [apihost, setApihost] = useState('');
-    const [key, setKey] = useState('');
+    const [apiKey, setApiKey] = useState('');
 
     return (
         <div className={`container mx-auto p-4 theme-${theme}`}>
@@ -31,7 +31,7 @@ function App() {
             <ConfigFetcher
                 onConfigLoaded={({ API_URL, SECRET, DEFAULT_THEME }) => {
                     setApihost(API_URL);
-                    setKey(SECRET);
+                    setApiKey(SECRET);
                     setTheme(DEFAULT_THEME);
                 }}
             />
@@ -42,7 +42,7 @@ function App() {
             />
             <DataFetcher
                 apihost={apihost}
-                key={key}
+                apiKey={apiKey}
                 setData={setData}
                 setIsInitialLoad={setIsInitialLoad}
                 data={data}
