@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaMemory, FaMicrochip, FaArrowDown, FaArrowUp, FaLink, FaPlay, FaPause, FaRedo } from 'react-icons/fa';
-import { toast, ToastContainer } from 'react-toastify';
+import { FaMemory, FaMicrochip, FaArrowDown, FaArrowUp, FaLink } from 'react-icons/fa';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './ContainerStats.css';
 
@@ -42,58 +42,6 @@ function ContainerStats({ container, timeInterval, onStopResume, onRestart }) {
     }, [cpu_usage]);
 
     const containerName = name.startsWith('/') ? name.substring(1) : name;
-
-    const handleStopResume = async () => {
-        toast.info('Request sent to toggle container state.');
-
-        try {
-            const response = await fetch(`http://localhost:7070/startstop`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ containerId: id, hostName: hostName })
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                toast.success(`Container state toggled successfully: ${result.message}`);
-                // Optionally, refresh container stats here
-            } else {
-                toast.error('Failed to toggle container state.');
-                console.error('Failed to toggle container state:', response.statusText);
-            }
-        } catch (error) {
-            toast.error('An error occurred.');
-            console.error('Error occurred:', error);
-        }
-    };
-
-    const handleRestart = async () => {
-        toast.info('Request sent to restart container.');
-
-        try {
-            const response = await fetch(`http://localhost:7070/restart`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ containerId: id, hostName: hostName })
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                toast.success(`Container restarted successfully: ${result.message}`);
-                // Optionally, refresh container stats here
-            } else {
-                toast.error('Failed to restart container.');
-                console.error('Failed to restart container:', response.statusText);
-            }
-        } catch (error) {
-            toast.error('An error occurred.');
-            console.error('Error occurred:', error);
-        }
-    };
 
     return (
         <div className="border p-4 rounded shadow container-bubble relative">
