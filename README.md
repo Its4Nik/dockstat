@@ -6,6 +6,7 @@ It shows usage statistics like CPU, RAM and Network usage.
 
 ## 🖊️ WORK IN PROGRESS
 
+- [X] Refactoring
 - [X] Fix theme switcher
 - [ ] WebUI for adding/removing hosts from the config of DockStatAPI
 - [ ] Sorting for Hosts
