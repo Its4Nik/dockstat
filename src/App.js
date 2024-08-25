@@ -32,7 +32,7 @@ function App() {
                 onConfigLoaded={({ API_URL, SECRET, DEFAULT_THEME }) => {
                     setApihost(API_URL);
                     setApiKey(SECRET);
-                    setTheme(DEFAULT_THEME);
+                    // setTheme(DEFAULT_THEME);
                 }}
             />
             <ThemeSwitcher

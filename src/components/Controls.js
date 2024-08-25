@@ -14,7 +14,10 @@ const Controls = ({ intervalTime, setIntervalTime, theme, setTheme }) => (
         <select
             className="border p-2 ml-4"
             value={theme}
-            onChange={(e) => setTheme(e.target.value)}
+            onChange={(e) => {
+                setTheme(e.target.value)
+                console.log("Theme changed to: ", e.target.value)
+            } }
         >
             <option value="light">Light</option>
             <option value="nord">Nord</option>
