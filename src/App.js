@@ -10,17 +10,17 @@ import Loading from './components/Loading';
 function App() {
     const [data, setData] = useState({});
     const [isInitialLoad, setIsInitialLoad] = useState(true);
-    const [intervalTime, setIntervalTime] = useState(5000);
+    const [intervalTime, setIntervalTime] = useState(5000); // Default to 5 seconds
     const [theme, setTheme] = useState('');
     const [loadingTheme, setLoadingTheme] = useState(false);
     const [apihost, setApihost] = useState('');
     const [apiKey, setApiKey] = useState('');
 
     return (
-        <div className={`container mx-auto p-4 theme-${theme}`}>
+        <div className="container mx-auto p-4">
             <ToastContainer />
             <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold">DockStat</h1>
+                <h1 className="text-3xl font-bold text-primary">DockStat</h1>
                 <Controls
                     intervalTime={intervalTime}
                     setIntervalTime={setIntervalTime}
@@ -32,13 +32,11 @@ function App() {
                 onConfigLoaded={({ API_URL, SECRET, DEFAULT_THEME }) => {
                     setApihost(API_URL);
                     setApiKey(SECRET);
-                    // setTheme(DEFAULT_THEME);
+                    setTheme(DEFAULT_THEME);
                 }}
             />
             <ThemeSwitcher
                 theme={theme}
-                setTheme={setTheme}
-                setLoadingTheme={setLoadingTheme}
             />
             <DataFetcher
                 apihost={apihost}
@@ -49,7 +47,10 @@ function App() {
             />
             <Loading isInitialLoad={isInitialLoad} loadingTheme={loadingTheme} />
             {Object.keys(data).length === 0 ? (
-                <p>No data available. 🫨</p>
+                <div>
+                    <p className="text-center text-primary text-lg">Loading...</p>
+                    <p className="text-center text-secondary text-small">If this screen persists please check the browser console.</p>
+                </div>
             ) : (
                 Object.keys(data).map((host) => (
                     <HostStats key={host} host={host} containers={data[host]} />

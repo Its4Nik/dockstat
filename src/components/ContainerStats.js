@@ -30,8 +30,8 @@ function getStatusClass(status) {
     }
 }
 
-function ContainerStats({ container, timeInterval, onStopResume, onRestart }) {
-    const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon, id, hostName } = container;
+function ContainerStats({ container }) {
+    const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon } = container;
 
     const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
 
@@ -44,9 +44,9 @@ function ContainerStats({ container, timeInterval, onStopResume, onRestart }) {
     const containerName = name.startsWith('/') ? name.substring(1) : name;
 
     return (
-        <div className="border p-4 rounded shadow container-bubble relative">
+        <div className="card shadow-md p-4 rounded-lg border border-base-300">
             <ToastContainer />
-            <div className="flex items-center justify-between relative">
+            <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <div className={`status-orb ${getStatusClass(state)} ${state === 'running' || state === 'starting' || state === 'error' ? 'pulse' : ''}`}></div>
                     {link ? (
@@ -62,19 +62,19 @@ function ContainerStats({ container, timeInterval, onStopResume, onRestart }) {
                 </div>
             </div>
             <div className="flex items-center mt-2">
-                <FaMicrochip className="mr-2" />
+                <FaMicrochip className="mr-2 text-primary" />
                 <p>{cpuPercentage}%</p>
             </div>
             <div className="flex items-center mt-2">
-                <FaMemory className="mr-2" />
+                <FaMemory className="mr-2 text-primary" />
                 <p>{formatBytesToGB(mem_usage)} GB / {formatBytesToGB(mem_limit)} GB</p>
             </div>
             <div className="flex items-center mt-2">
-                <FaArrowUp className={`network-stats ${current_net_tx !== 0 ? 'pulse' : ''} mr-2`} />
+                <FaArrowUp className={`network-stats ${current_net_tx !== 0 ? 'pulse' : ''} mr-2 text-info`} />
                 <p>{formatBytesToMB(current_net_tx)} MB/s</p>
             </div>
             <div className="flex items-center mt-2">
-                <FaArrowDown className={`network-stats ${current_net_rx !== 0 ? 'pulse' : ''} mr-2`} />
+                <FaArrowDown className={`network-stats ${current_net_rx !== 0 ? 'pulse' : ''} mr-2 text-info`} />
                 <p>{formatBytesToMB(current_net_rx)} MB/s</p>
             </div>
             {icon && (

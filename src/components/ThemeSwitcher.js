@@ -1,18 +1,13 @@
 import { useEffect } from 'react';
+import { themeChange } from 'theme-change';
 
-const ThemeSwitcher = ({ theme, setTheme, setLoadingTheme }) => {
+const ThemeSwitcher = ({ theme }) => {
     useEffect(() => {
-        setLoadingTheme(true);
-        if (theme === 'nord') {
-            import('./themes/nord.css').then(() => setLoadingTheme(false));
-        } else if (theme === 'dracula') {
-            import('./themes/dracula.css').then(() => setLoadingTheme(false));
-        } else if (theme === 'light') {
-            import('./themes/light.css').then(() => setLoadingTheme(false));
-        }
-    }, [theme, setLoadingTheme]);
+        themeChange(false);
+        document.querySelector('html').setAttribute('data-theme', theme); // Set theme attribute on the HTML tag
+    }, [theme]);
 
-    return null; // This component does not render anything
+    return null; // This component doesn't need to render anything
 };
 
 export default ThemeSwitcher;

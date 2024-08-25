@@ -14,6 +14,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
     "tailwindcss": "^3.4.10",
+    "theme-change": "^2.5.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "daisyui": "^4.12.10"
   }
 }
