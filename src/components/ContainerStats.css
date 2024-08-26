@@ -77,54 +77,6 @@
     animation: network-pulse 1s infinite;
 }
 
-.border {
-    border: 1px solid #e2e8f0;
-}
-
-.p-4 {
-    padding: 1rem;
-}
-
-.rounded {
-    border-radius: 0.5rem;
-}
-
-.shadow {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.flex {
-    display: flex;
-}
-
-.items-center {
-    align-items: center;
-}
-
-.mt-2 {
-    margin-top: 0.5rem;
-}
-
-.mr-2 {
-    margin-right: 0.5rem;
-}
-
-.ml-2 {
-    margin-left: 0.5rem;
-}
-
-.ml-4 {
-    margin-left: 1rem;
-}
-
-.font-semibold {
-    font-weight: 600;
-}
-
-.text-lg {
-    font-size: 1.125rem;
-}
-
 .container-bubble {
     position: relative;
     overflow: hidden;

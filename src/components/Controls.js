@@ -55,9 +55,12 @@ const Controls = ({ intervalTime, setIntervalTime, theme, setTheme }) => {
                             >
                                 <option value="light">☀️ - Light</option>^
                                 <option value="nord">☀️ - Nord</option>
+                                <option value="valentine">☀️ - Pastel</option>
+                                <option value="business">🌙 - Business</option>
                                 <option value="dracula">🌙 - Dracula</option>
                                 <option value="sunset">🌙 - Sunset</option>
                                 <option value="night">🌙 - Night</option>
+                                <option value="forest">🌙 - Forest</option>
                                 <option value="black">🌙 - Amoled</option>
                             </select>
                         </div>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FaArrowDown } from "react-icons/fa";
+
 import ContainerStats from './ContainerStats';
 
 function HostStats({ host, containers }) {
@@ -17,7 +19,7 @@ function HostStats({ host, containers }) {
                 <span
                     className={`mr-2 transition-transform duration-300 ease-in-out ${isCollapsed ? 'rotate-180' : ''}`}
                 >
-                    ▲
+                    <FaArrowDown />
                 </span>
                 <h2 className="text-xl font-semibold mb-2 text-primary flex-1">{host} - {containers.length} Containers</h2>
                 <div className="text-right ml-4">
@@ -34,7 +36,7 @@ function HostStats({ host, containers }) {
                     ))}
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
