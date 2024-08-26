@@ -9,6 +9,7 @@ daisyui: {
 ```
 
 ℹ️ "valentine" is known as "Pastel"
+
 ℹ️ "black" is known as "Amoled"
 
 ---
