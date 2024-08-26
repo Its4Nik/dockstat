@@ -43,8 +43,12 @@ function ContainerStats({ container }) {
 
     const containerName = name.startsWith('/') ? name.substring(1) : name;
 
+    // Check if the icon is a Simple Icon by checking the "SI:" prefix
+    const isSimpleIcon = icon && icon.startsWith("SI:");
+    const simpleIconName = isSimpleIcon ? icon.substring(3).toLowerCase() : null; // Convert to lowercase for the slug
+
     return (
-        <div className="card shadow-md p-4 rounded-lg border border-base-300">
+        <div className="card shadow-md p-4 rounded-lg border border-base-300 relative">
             <ToastContainer />
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -77,7 +81,13 @@ function ContainerStats({ container }) {
                 <FaArrowDown className={`network-stats ${current_net_rx !== 0 ? 'pulse' : ''} mr-2 text-info`} />
                 <p>{formatBytesToMB(current_net_rx)} MB/s</p>
             </div>
-            {icon && (
+            {isSimpleIcon ? (
+                <img
+                    src={`https://cdn.simpleicons.org/${simpleIconName}/black/white`}
+                    alt={`${simpleIconName} Icon`}
+                    className="container-icon absolute bottom-0 right-0 p-2"
+                />
+            ) : icon && (
                 <img src={`/icons/${icon}`} alt="Container Icon" className="container-icon absolute bottom-0 right-0 p-2" />
             )}
         </div>
