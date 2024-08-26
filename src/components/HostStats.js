@@ -3,7 +3,7 @@ import { FaArrowDown } from "react-icons/fa";
 
 import ContainerStats from './ContainerStats';
 
-function HostStats({ host, containers }) {
+function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLogoColor }) {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const toggleCollapse = () => {
@@ -32,11 +32,17 @@ function HostStats({ host, containers }) {
             >
                 <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                     {containers.map((container) => (
-                        <ContainerStats key={container.name} container={container} />
+                        <ContainerStats
+                            key={container.name}
+                            container={container}
+                            logoSize={logoSize}
+                            darkModeLogoColor={darkModeLogoColor}
+                            lightModeLogoColor={lightModeLogoColor}
+                        />
                     ))}
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 

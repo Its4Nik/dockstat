@@ -77,10 +77,10 @@
     animation: network-pulse 1s infinite;
 }
 
+/*
 .container-bubble {
     position: relative;
     overflow: hidden;
-    /* Ensure content doesn't spill outside */
 }
 
 .container-icon {
@@ -89,7 +89,7 @@
     right: 8px;
     height: 5rem;
     object-fit: fill;
-    /* Ensures image covers the box */
     border-radius: 4px;
-    /* Optional: adds rounded corners */
 }
+
+*/

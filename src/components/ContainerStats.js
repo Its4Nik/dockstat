@@ -30,7 +30,7 @@ function getStatusClass(status) {
     }
 }
 
-function ContainerStats({ container }) {
+function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor }) {
     const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon } = container;
 
     const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
@@ -83,13 +83,14 @@ function ContainerStats({ container }) {
             </div>
             {isSimpleIcon ? (
                 <img
-                    src={`https://cdn.simpleicons.org/${simpleIconName}/black/white`}
+                    src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor ? `/${lightModeLogoColor}/${darkModeLogoColor}` : ''}`}
                     alt={`${simpleIconName} Icon`}
-                    className="container-icon absolute bottom-0 right-0 p-2"
+                    className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`}
                 />
             ) : icon && (
-                <img src={`/icons/${icon}`} alt="Container Icon" className="container-icon absolute bottom-0 right-0 p-2" />
+                <img src={`/icons/${icon}`} alt="Container Icon" className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`} />
             )}
+
         </div>
     );
 }

@@ -10,11 +10,22 @@ import Loading from './components/Loading';
 function App() {
     const [data, setData] = useState({});
     const [isInitialLoad, setIsInitialLoad] = useState(true);
-    const [intervalTime, setIntervalTime] = useState(5000); // Default to 5 seconds
+    const [intervalTime, setIntervalTime] = useState(10000);
     const [theme, setTheme] = useState('');
     const [loadingTheme, setLoadingTheme] = useState(false);
     const [apihost, setApihost] = useState('');
     const [apiKey, setApiKey] = useState('');
+    const [logoSize, setLogoSize] = useState('');
+    const [darkModeLogoColor, setDarkModeLogoColor] = useState('');
+    const [lightModeLogoColor, setLightModeLogoColor] = useState('');
+
+    const handleConfigLoaded = (configData) => {
+        setApihost(configData.API_URL);
+        setApiKey(configData.SECRET);
+        setLogoSize(configData.LOGO_SIZE);
+        setDarkModeLogoColor(configData.DARK_MODE_LOGO_COLOR);
+        setLightModeLogoColor(configData.LIGHT_MODE_LOGO_COLOR);
+    };
 
     return (
         <div className="container mx-auto p-4">
@@ -28,15 +39,8 @@ function App() {
                     setTheme={setTheme}
                 />
             </div>
-            <ConfigFetcher
-                onConfigLoaded={({ API_URL, SECRET }) => {
-                    setApihost(API_URL);
-                    setApiKey(SECRET);
-                }}
-            />
-            <ThemeSwitcher
-                theme={theme}
-            />
+            <ConfigFetcher onConfigLoaded={handleConfigLoaded} />
+            <ThemeSwitcher theme={theme} />
             <DataFetcher
                 apihost={apihost}
                 apiKey={apiKey}
@@ -48,12 +52,21 @@ function App() {
             {Object.keys(data).length === 0 ? (
                 <div>
                     <p className="text-center text-primary text-lg">Loading...</p>
-                    <p className="text-center text-secondary text-small">If this screen persists please check the browser console.</p>
+                    <p className="text-center text-secondary text-small">If this screen persists, please check the browser console.</p>
                 </div>
             ) : (
-                Object.keys(data).map((host) => (
-                    <HostStats key={host} host={host} containers={data[host]} />
-                ))
+                Object.keys(data).map((host) => {
+                    return (
+                        <HostStats
+                            key={host}
+                            host={host}
+                            containers={data[host]}
+                            logoSize={logoSize}
+                            darkModeLogoColor={darkModeLogoColor}
+                            lightModeLogoColor={lightModeLogoColor}
+                        />
+                    );
+                })
             )}
         </div>
     );
