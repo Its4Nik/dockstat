@@ -4,9 +4,9 @@ Dockstat is a monitoring frontend powered by the [DockStatAPI](https://github.co
 
 It shows usage statistics like CPU, RAM and Network usage.
 
-Example Screenshot ("Night" theme):
-
 ![Example, Night Theme](/docs/screenshots/night.png)
+
+See more examples [here](/docs/MultipleThemes.md).
 
 ## 🖊️ WORK IN PROGRESS
 
@@ -70,7 +70,7 @@ services:
 
 - ⚠️ SECRET: The Secret Token required fot the DockStatAPI endpoint
 
-- ⚙️ DEFAULT_THEME: default theme. Screenshots here
+- ⚙️ DEFAULT_THEME: default theme. Screenshots [here](/docs/MultipleThemes.md)
 
 - ⚙️ LOGO_SIZE: Logo sizes (XS, S, M, L, XL)
 

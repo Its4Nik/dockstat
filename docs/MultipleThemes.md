@@ -2,7 +2,7 @@
 
 To set the default theme please use the Name provided by DaisyUI.
 
-```json
+```
 daisyui: {
     themes: ["light", "nord", "dracula", "sunset", "night", "black", "valentine", "forest", "business"],
   },
