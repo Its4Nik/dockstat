@@ -1,0 +1,28 @@
+name: DockStat
+services:
+  dockstat:
+    image: ghcr.io/its4nik/dockstat:latest
+    container_name: dockstat
+    ports:
+      - "4444:3000"
+    environment:
+      - API_URL="http://localhost:7070" # Host of the DockStatAPI endpoint
+      - DEFAULT_THEME="dracula"
+      - SECRET="CHANGME"
+      - LOGO_SIZE="L"                   # Default Logo Size "L"
+      - DM_LOGO_COLOR="#FFFFFF"         # Default Dark mode logo color "#FFFFFF" (white) 
+      - LM_LOGO_COLOR="#000000"         # Default Dark mode logo color "#000000" (black)
+    volumes:
+      - ./dockstat/icons:/app/build/icons
+    restart: always
+
+  dockstatapi:
+    image: ghcr.io/its4nik/dockstatapi:latest
+    container_name: dockstatapi
+    environment:
+      - SECRET=CHANGEME # This is required in the header 'Authorization': 'CHANGEME'
+    ports:
+      - "7070:7070"
+    volumes:
+      - ./dockstatapi:/api/config # Place your hosts.yaml file here
+    restart: always
