@@ -62,6 +62,7 @@ services:
 ## 🖊️ Configuration
 
 ⚠️ = required
+
 ⚙️ = optional
 
 ---
