@@ -1,53 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
+import { IoSettingsOutline } from "react-icons/io5";
+import { CSSTransition } from 'react-transition-group';
+import './ModalAnimations.css'; // Import the CSS for animations
 
-const Controls = ({ intervalTime, setIntervalTime, theme, setTheme }) => (
-    <div className="flex items-center space-x-4">
-        {/* Interval Time Dropdown */}
-        <div className="relative">
-            <select
-                className="select select-bordered p-2 appearance-none pr-7"
-                value={intervalTime}
-                onChange={(e) => setIntervalTime(Number(e.target.value))}
+const Controls = ({ intervalTime, setIntervalTime, theme, setTheme }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleThemeChange = (e) => {
+        setTheme(e.target.value);
+    };
+
+    return (
+        <>
+            {/* Control Buttons */}
+            <div className="flex items-center space-x-4">
+                {/* Open Modal Button */}
+                <button
+                    className="btn btn-outline flex items-center space-x-2"
+                    onClick={() => setIsModalOpen(true)}
+                >
+                    <IoSettingsOutline />
+                </button>
+
+                {/* GitHub Icon */}
+                <a
+                    href="https://github.com/its4nik/dockstat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-4xl text-primary hover:text-secondary"
+                >
+                    <FaGithub />
+                </a>
+            </div>
+
+            {/* Modal for Settings */}
+            <CSSTransition
+                in={isModalOpen}
+                timeout={300}
+                classNames="modal"
+                unmountOnExit
             >
-                <option value={5000}>5 Seconds</option>
-                <option value={10000}>10 Seconds</option>
-                <option value={30000}>30 Seconds</option>
-            </select>
-            <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                {/* Optional custom icon for dropdown */}
-            </span>
-        </div>
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 bg-base-100 backdrop-filter backdrop-blur-sm transition-opacity duration-300 ease-in-out">
+                    <div className="bg-base-100 rounded-lg shadow-lg p-6 w-80 transition-transform transform-gpu duration-300 ease-in-out">
+                        <h2 className="text-lg font-semibold mb-4">Settings</h2>
 
-        {/* Theme Dropdown */}
-        <div className="relative">
-            <select
-                className="select select-bordered p-2 appearance-none pr-7"
-                value={theme}
-                onChange={(e) => setTheme(e.target.value)}
-            >
-                <option value="light">☀️ - Light</option>
-                <option value="nord">☀️ - Nord</option>
-                <option value="dracula">🌙 - Dracula</option>
-                <option value="sunset">🌙 - Sunset</option>
-                <option value="night">🌙 - Night</option>
-                <option value="black">🌙 - Amoled</option>
-            </select>
-            <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                {/* Optional custom icon for dropdown */}
-            </span>
-        </div>
+                        {/* Theme Selector */}
+                        <div className="mb-4">
+                            <h3 className="text-md font-medium mb-2">Select Theme</h3>
+                            <select
+                                className="select select-bordered w-full"
+                                value={theme}
+                                onChange={handleThemeChange}
+                            >
+                                <option value="light">☀️ - Light</option>^
+                                <option value="nord">☀️ - Nord</option>
+                                <option value="dracula">🌙 - Dracula</option>
+                                <option value="sunset">🌙 - Sunset</option>
+                                <option value="night">🌙 - Night</option>
+                                <option value="black">🌙 - Amoled</option>
+                            </select>
+                        </div>
 
-        {/* GitHub Icon */}
-        <a
-            href="https://github.com/its4nik/dockstat" // Replace with your GitHub repo URL
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-4xl text-gray-600 hover:text-gray-900"
-        >
-            <FaGithub />
-        </a>
-    </div>
-);
+                        {/* Refresh Rate Selector */}
+                        <div>
+                            <h3 className="text-md font-medium mb-2">Select Refresh Rate</h3>
+                            <select
+                                className="select select-bordered w-full"
+                                value={intervalTime}
+                                onChange={(e) => setIntervalTime(Number(e.target.value))}
+                            >
+                                <option value={5000}>5 Seconds</option>
+                                <option value={10000}>10 Seconds</option>
+                                <option value={30000}>30 Seconds</option>
+                            </select>
+                        </div>
+
+                        <button
+                            className="btn btn-primary mt-6 w-full"
+                            onClick={() => setIsModalOpen(false)}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </CSSTransition>
+        </>
+    );
+};
 
 export default Controls;

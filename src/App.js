@@ -29,10 +29,9 @@ function App() {
                 />
             </div>
             <ConfigFetcher
-                onConfigLoaded={({ API_URL, SECRET, DEFAULT_THEME }) => {
+                onConfigLoaded={({ API_URL, SECRET }) => {
                     setApihost(API_URL);
                     setApiKey(SECRET);
-                    //setTheme(DEFAULT_THEME); // @Deviser this one right here....
                 }}
             />
             <ThemeSwitcher

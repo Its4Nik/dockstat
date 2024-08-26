@@ -1,0 +1,41 @@
+/* Fade in and out for modal backdrop */
+.modal-enter {
+    opacity: 0;
+}
+
+.modal-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in-out;
+}
+
+.modal-exit {
+    opacity: 1;
+}
+
+.modal-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+/* Scale in and out for the modal content */
+.modal-enter .bg-white {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+.modal-enter-active .bg-white {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+.modal-exit .bg-white {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-exit-active .bg-white {
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
