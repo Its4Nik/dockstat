@@ -4,6 +4,10 @@ Dockstat is a monitoring frontend powered by the [DockStatAPI](https://github.co
 
 It shows usage statistics like CPU, RAM and Network usage.
 
+Example Screenshot ("Night" theme):
+
+![Example, Night Theme](/docs/night.png)
+
 ## 🖊️ WORK IN PROGRESS
 
 - [X] Refactoring
