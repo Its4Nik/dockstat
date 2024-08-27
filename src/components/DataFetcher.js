@@ -13,7 +13,7 @@ const fetchConfig = async () => {
     }
 };
 
-const DataFetcher = ({ apihost, apiKey, setData, setIsInitialLoad, data }) => {
+const DataFetcher = ({ apihost, apiKey, setData, setIsInitialLoad, data, sortBy }) => {
     const [configData, setConfigData] = useState(null);
     const [isInitialLoad, setInitialLoad] = useState(true);
 
@@ -41,7 +41,18 @@ const DataFetcher = ({ apihost, apiKey, setData, setIsInitialLoad, data }) => {
                 const result = await response.json();
 
                 if (JSON.stringify(result) !== JSON.stringify(data)) {
-                    setData(result);
+                    const sortedResult = Object.keys(result).sort((a, b) => {
+                        // Default sort by host name
+                        if (sortBy === 'name') {
+                            return a.localeCompare(b);
+                        }
+                        // Add more sorting criteria if needed
+                        return 0;
+                    }).reduce((acc, key) => {
+                        acc[key] = result[key];
+                        return acc;
+                    }, {});
+                    setData(sortedResult);
                 }
 
                 if (isInitialLoad) {
@@ -56,7 +67,7 @@ const DataFetcher = ({ apihost, apiKey, setData, setIsInitialLoad, data }) => {
         fetchData();
         const interval = setInterval(fetchData, 5000); // intervalTime can be managed via props or state if necessary
         return () => clearInterval(interval);
-    }, [apihost, apiKey, data, setData, setIsInitialLoad, configData, isInitialLoad]);
+    }, [apihost, apiKey, data, setData, setIsInitialLoad, configData, isInitialLoad, sortBy]);
 
     return null; // This component does not render anything
 };

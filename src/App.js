@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import HostStats from './components/HostStats';
 import ConfigFetcher from './components/ConfigFetcher';
@@ -10,14 +10,15 @@ import Loading from './components/Loading';
 function App() {
     const [data, setData] = useState({});
     const [isInitialLoad, setIsInitialLoad] = useState(true);
-    const [intervalTime, setIntervalTime] = useState(10000);
     const [theme, setTheme] = useState('');
+    const [intervalTime, setIntervalTime] = useState(10000);
     const [loadingTheme, setLoadingTheme] = useState(false);
     const [apihost, setApihost] = useState('');
     const [apiKey, setApiKey] = useState('');
     const [logoSize, setLogoSize] = useState('');
     const [darkModeLogoColor, setDarkModeLogoColor] = useState('');
     const [lightModeLogoColor, setLightModeLogoColor] = useState('');
+    const [sortOption, setSortOption] = useState('name-asc');
 
     const handleConfigLoaded = (configData) => {
         setApihost(configData.API_URL);
@@ -25,6 +26,27 @@ function App() {
         setLogoSize(configData.LOGO_SIZE);
         setDarkModeLogoColor(configData.DARK_MODE_LOGO_COLOR);
         setLightModeLogoColor(configData.LIGHT_MODE_LOGO_COLOR);
+    };
+
+    const sortHosts = (hostsData, option) => {
+        const sortedHosts = [...Object.keys(hostsData)].sort((a, b) => {
+            const aData = hostsData[a];
+            const bData = hostsData[b];
+
+            switch (option) {
+                case 'name-asc':
+                    return a.localeCompare(b);
+                case 'name-desc':
+                    return b.localeCompare(a);
+                case 'containers-asc':
+                    return aData.length - bData.length;
+                case 'containers-desc':
+                    return bData.length - aData.length;
+                default:
+                    return 0;
+            }
+        });
+        return sortedHosts;
     };
 
     return (
@@ -37,6 +59,8 @@ function App() {
                     setIntervalTime={setIntervalTime}
                     theme={theme}
                     setTheme={setTheme}
+                    sortOption={sortOption}
+                    setSortOption={setSortOption}
                 />
             </div>
             <ConfigFetcher onConfigLoaded={handleConfigLoaded} />
@@ -55,7 +79,7 @@ function App() {
                     <p className="text-center text-secondary text-small">If this screen persists, please check the browser console.</p>
                 </div>
             ) : (
-                Object.keys(data).map((host) => {
+                sortHosts(data, sortOption).map((host) => {
                     return (
                         <HostStats
                             key={host}
