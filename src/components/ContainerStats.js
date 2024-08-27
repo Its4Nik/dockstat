@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FaMemory, FaMicrochip, FaArrowDown, FaArrowUp, FaLink } from 'react-icons/fa';
 import { ToastContainer } from 'react-toastify';
+import AdvancedStats from './AdvancedStats';
 import 'react-toastify/dist/ReactToastify.css';
 import './ContainerStats.css';
 import './LogoSizes.css'
+
 
 function formatBytesToMB(bytes) {
     return (bytes / (1024 * 1024)).toFixed(2);
@@ -32,7 +34,7 @@ function getStatusClass(status) {
 }
 
 function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor }) {
-    const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon } = container;
+    const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon, id } = container;
 
     const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
 
@@ -50,13 +52,21 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 
     return (
         <div className="card shadow-md p-4 rounded-lg border border-base-300 relative">
+            <AdvancedStats
+                id={id}
+                containerName={containerName}
+                link={link}
+                icon={icon}
+                darkModeLogoColor={darkModeLogoColor}
+                lightModeLogoColor={lightModeLogoColor}
+            />
             <ToastContainer />
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <div className={`status-orb ${getStatusClass(state)} ${state === 'running' || state === 'starting' || state === 'error' ? 'pulse' : ''}`}></div>
                     {link ? (
                         <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                            <FaLink className="mr-1 text-gray-500" />
+                            <FaLink className="mr-1 text-primary" />
                             <h3 className="font-semibold text-lg ml-1">{containerName}</h3>
                         </a>
                     ) : (
@@ -66,6 +76,7 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
                     )}
                 </div>
             </div>
+
             <div className="flex items-center mt-2">
                 <FaMicrochip className="mr-2 text-primary" />
                 <p>{cpuPercentage}%</p>
@@ -91,7 +102,6 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
             ) : icon && (
                 <img src={`/icons/${icon}`} alt="Container Icon" className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`} />
             )}
-
         </div>
     );
 }

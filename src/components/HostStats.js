@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaArrowDown } from "react-icons/fa";
 
 import ContainerStats from './ContainerStats';
 
 function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLogoColor }) {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [contentHeight, setContentHeight] = useState('auto');
+    const contentRef = useRef(null);
 
     const toggleCollapse = () => {
         setIsCollapsed(!isCollapsed);
     };
+
+    useEffect(() => {
+        if (contentRef.current) {
+            setContentHeight(isCollapsed ? '0px' : `${contentRef.current.scrollHeight}px`);
+        }
+    }, [isCollapsed]);
 
     return (
         <div className="mb-6 border border-base-300 rounded-lg p-4">
@@ -28,7 +36,9 @@ function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLog
                 </div>
             </div>
             <div
-                className={`transition-all duration-500 ease-in-out overflow-hidden ${isCollapsed ? 'max-h-0 opacity-0' : 'max-h-full opacity-100'}`}
+                ref={contentRef}
+                className="transition-all duration-500 ease-in-out overflow-hidden"
+                style={{ maxHeight: contentHeight, opacity: isCollapsed ? '0' : '1' }}
             >
                 <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                     {containers.map((container) => (
