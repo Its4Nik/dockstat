@@ -76,20 +76,3 @@
 .network-stats.pulse {
     animation: network-pulse 1s infinite;
 }
-
-/*
-.container-bubble {
-    position: relative;
-    overflow: hidden;
-}
-
-.container-icon {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    height: 5rem;
-    object-fit: fill;
-    border-radius: 4px;
-}
-
-*/
