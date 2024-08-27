@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { CSSTransition } from 'react-transition-group';
 import { FaClipboard, FaClipboardCheck } from "react-icons/fa";
-import './AdvancedStats.css'; // Assuming this is your existing CSS for styling
-import './ModalAnimations.css'; // Import the CSS for animations
+import './css/AdvancedStats.css';
+import './css/ModalAnimations.css';
 
 function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoColor, lightModeLogoColor }) {
     const [isModalOpen, setIsModalOpen] = useState(false);

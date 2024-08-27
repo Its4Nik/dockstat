@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { IoSettingsOutline } from "react-icons/io5";
 import { CSSTransition } from 'react-transition-group';
-import './ModalAnimations.css'; // Import the CSS for animations
+import './css/ModalAnimations.css'; // Import the CSS for animations
 
 const Controls = ({ intervalTime, setIntervalTime, theme, setTheme }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
