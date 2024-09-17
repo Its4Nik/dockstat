@@ -1,0 +1,26 @@
+name: Docker Image CI
+
+on:
+    push:
+        branches: [ "dev" ]
+
+permissions:
+    packages: write
+    contents: read
+
+jobs:
+    build-main:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              name: Checkout repository
+
+            - uses: pmorelli92/github-container-registry-build-push@2.2.1
+              name: Build and Publish latest service image
+              with:
+                github-push-secret: ${{secrets.GITHUB_TOKEN}}
+                docker-image-name: dockstat
+                docker-image-tag: dev # optional
+                dockerfile-path: Dockerfile # optional
+                build-context: . # optional
+                build-only: false # optional

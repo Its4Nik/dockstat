@@ -19,6 +19,8 @@ function App() {
     const [darkModeLogoColor, setDarkModeLogoColor] = useState('');
     const [lightModeLogoColor, setLightModeLogoColor] = useState('');
     const [sortOption, setSortOption] = useState('name-asc');
+    const [defaultTheme, setDefaultTheme] = useState('');
+    const [gridSize, setGridSize] = useState('compact');
 
     const handleConfigLoaded = (configData) => {
         setApihost(configData.API_URL);
@@ -26,6 +28,7 @@ function App() {
         setLogoSize(configData.LOGO_SIZE);
         setDarkModeLogoColor(configData.DARK_MODE_LOGO_COLOR);
         setLightModeLogoColor(configData.LIGHT_MODE_LOGO_COLOR);
+        setDefaultTheme(configData.DEFAULT_THEME);
     };
 
     const sortHosts = (hostsData, option) => {
@@ -63,6 +66,9 @@ function App() {
                     setTheme={setTheme}
                     sortOption={sortOption}
                     setSortOption={setSortOption}
+                    defaultTheme={defaultTheme}
+                    gridSize={gridSize}
+                    setGridSize={setGridSize}
                 />
             </div>
             <ConfigFetcher onConfigLoaded={handleConfigLoaded} />
@@ -94,6 +100,7 @@ function App() {
                             logoSize={logoSize}
                             darkModeLogoColor={darkModeLogoColor}
                             lightModeLogoColor={lightModeLogoColor}
+                            gridSize={gridSize}
                         />
                     );
                 })

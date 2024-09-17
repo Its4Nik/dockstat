@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { IoSettingsOutline, IoTerminalOutline } from "react-icons/io5";
 import { CSSTransition } from 'react-transition-group';
-import ConfigModal from './ConfigModal'
+import ConfigModal from './ConfigModal';
 import SortDropdown from './dropdowns/SortDropdown';
 import ThemeDropdown from './dropdowns/ThemeDropdown';
 import './css/ModalAnimations.css';
-import './css/ConfigModal.css'
+import './css/ConfigModal.css';
 
-const Controls = ({ intervalTime, setIntervalTime, theme, setTheme, sortOption, setSortOption, apihost, apiKey }) => {
+const Controls = ({ intervalTime, setIntervalTime, theme, setTheme, sortOption, setSortOption, apihost, apiKey, defaultTheme, gridSize, setGridSize }) => {
     const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
     const [isTerminalModalOpen, setIsTerminalModalOpen] = useState(false);
+    const [initialThemeSet, setInitialThemeSet] = useState(false);
+    const [currentTheme, setCurrentTheme] = useState('');
+
+    useEffect(() => {
+        if (isSettingsModalOpen && !initialThemeSet) {
+            setCurrentTheme(defaultTheme);
+            setInitialThemeSet(true);
+        }
+    }, [isSettingsModalOpen, defaultTheme, initialThemeSet]);
 
     const handleThemeChange = (e) => {
-        setTheme(e.target.value);
+        const newTheme = e.target.value;
+        setCurrentTheme(newTheme);
+        setTheme(newTheme);
     };
+
     return (
         <>
             {/* Control Buttons */}
@@ -61,7 +73,7 @@ const Controls = ({ intervalTime, setIntervalTime, theme, setTheme, sortOption, 
                         <div className="mb-4">
                             <h3 className="text-md font-medium mb-2">Select Theme</h3>
                             <ThemeDropdown
-                                value={theme}
+                                value={currentTheme} // Use the current theme from the local state
                                 onChange={handleThemeChange}
                             />
                         </div>
@@ -87,6 +99,21 @@ const Controls = ({ intervalTime, setIntervalTime, theme, setTheme, sortOption, 
                                 value={sortOption}
                                 onChange={(e) => setSortOption(e.target.value)}
                             />
+                        </div>
+
+                        {/* Size Selector */}
+
+                        <div className="mb-4">
+                            <h3 className="text-md font-medium mb-2">Grid Size</h3>
+                            <select
+                                className="select select-bordered w-full"
+                                value={gridSize}
+                                onChange={(e) => setGridSize(e.target.value)}
+                            >
+                                <option value="compact">Compact</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                            </select>
                         </div>
 
                         <button

@@ -124,7 +124,7 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
             {isHostNetwork ? (
                 <div className="flex items-center mt-2">
                     <BsFillHddNetworkFill className="mr-2 text-primary" />
-                    <p>This container is using the host network.</p>
+                    <p>Host network</p>
                 </div>
             ) : (
                 <>

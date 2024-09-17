@@ -3,13 +3,26 @@ import { FaArrowDown } from "react-icons/fa";
 
 import ContainerStats from './ContainerStats';
 
-function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLogoColor }) {
+function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLogoColor, gridSize }) {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [contentHeight, setContentHeight] = useState('auto');
     const contentRef = useRef(null);
 
     const toggleCollapse = () => {
         setIsCollapsed(!isCollapsed);
+    };
+
+    const getGridClass = (gridSize) => {
+        switch (gridSize) {
+            case 'compact':
+                return 'md:grid-cols-4';
+            case 'medium':
+                return 'md:grid-cols-3';
+            case 'large':
+                return 'md:grid-cols-2';
+            default:
+                return 'md:grid-cols-4';
+        }
     };
 
     useEffect(() => {
@@ -25,7 +38,7 @@ function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLog
                 onClick={toggleCollapse}
             >
                 <span
-                    className={`mr-2 transition-transform duration-300 ease-in-out ${isCollapsed ? 'rotate-180' : ''}`}
+                    className={`mr-2  mb-1 transition-transform duration-300 ease-in-out ${isCollapsed ? 'rotate-180' : ''}`}
                 >
                     <FaArrowDown />
                 </span>
@@ -40,7 +53,7 @@ function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLog
                 className="transition-all duration-500 ease-in-out overflow-hidden"
                 style={{ maxHeight: contentHeight, opacity: isCollapsed ? '0' : '1' }}
             >
-                <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className={`mt-2 grid gap-3 grid-cols-1 ${getGridClass(gridSize)}`}>
                     {containers.map((container) => (
                         <ContainerStats
                             key={container.name}
