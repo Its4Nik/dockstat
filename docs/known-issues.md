@@ -6,6 +6,10 @@ This document lists known issues with the Dockstat project, along with their sta
 
 ## Current Issues
 
+/
+
+## Resolved Issues
+
 <h3 align="center">
     ❌ 3. Tedious tagging system
 </h3>
@@ -14,15 +18,15 @@ This document lists known issues with the Dockstat project, along with their sta
 The current tagginng system relies on every container being tagged by itself, this is pretty annoying if i can say so.
 
 **Status:**
-⏳ W.I.P.
+✅ Resolved
 
 **Workaround:**
-None, just have to fix it...
+No workaround is needed as the issue has been resolved in the latest update.
 
 **Corresponding issue:**
 [#13](https://github.com/Its4Nik/dockstat/issues/13)
 
-## Resolved Issues
+---
 
 <h3 align="center">
     ❌ 2. Theme Unavailability Issue

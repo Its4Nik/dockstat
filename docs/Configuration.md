@@ -26,29 +26,27 @@ Place this file inside the mounted directory for `/api/config`.
 ### Example `hosts.yaml` File
 
 ```yaml
-mintimeout: 10000 # Minimum time to wait before querying the same server again (default: 5000 ms)
+mintimeout: 10000 # The minimum time to wait before querying the same server again, defaults to 5000 Ms
 
 log:
-  logsize: 10 # Size of the log files in MB (default: 1MB)
-  LogCount: 1 # Number of log files to keep in rotation (default: 5)
+  logsize: 10 # Specify the Size of the log files in MB, default is 1MB
+  LogCount: 1 # How many log files should be kept in rotation. Default is 5
+
+tags:
+  raspberry: red-200
+  private: violet-400
 
 hosts:
   YourHost1:
-    url: server.local
+    url: hetzner
     port: 2375
 
-  YourHost2:
-    url: raspberrypi.local
-    port: 1234
-
-  YourHost3:
-    url: dockerhost.local
-    port: 4321
-
 container:
-  MyContainer:
+  dozzle: # Container name
     link: https://github.com
-    icon: container.png
+    icon: minecraft.png
+    tags: private,raspberry
+
 ```
 
 ---
@@ -110,9 +108,14 @@ container:
 Add tags to containers in the configuration file:
 
 ```yaml
+tags:
+  raspberry: red-200
+
+  ...
+
 container:
   MyContainer:
-    tags: private:violet-400
+        tags: raspberry
 ```
 
 You can add multiple tags:
@@ -120,7 +123,7 @@ You can add multiple tags:
 ```yaml
 container:
   MyContainer:
-    tags: private:violet-400,cloudserver:red-200
+    tags: private,cloudserver
 ```
 
 Use TailwindCSS background color values. See [TailwindCSS colors](https://tailwindcss.com/docs/border-color) for reference.
