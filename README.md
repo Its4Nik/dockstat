@@ -68,6 +68,10 @@ services:
     restart: always
 ```
 
+## Configuration:
+
+Please see [Configuration.md](/docs/Configuration.md)
+
 ---
 
 ## Star History
