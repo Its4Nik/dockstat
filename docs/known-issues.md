@@ -7,6 +7,42 @@ This document lists known issues with the Dockstat project, along with their sta
 ## Current Issues
 
 <h3 align="center">
+    ❌ 3. Tedious tagging system
+</h3>
+
+**Description:**
+The current tagginng system relies on every container being tagged by itself, this is pretty annoying if i can say so.
+
+**Status:**
+⏳ W.I.P.
+
+**Workaround:**
+None, just have to fix it...
+
+**Corresponding issue:**
+[#13](https://github.com/Its4Nik/dockstat/issues/13)
+
+## Resolved Issues
+
+<h3 align="center">
+    ❌ 2. Theme Unavailability Issue
+</h3>
+
+**Description:**
+Adding the default theme may render other themes unusable due to the inability to select them.
+
+**Status:**
+✅ Resolved
+
+**Workaround:**
+No workaround is needed as the issue has been resolved in the latest update.
+
+**Corresponding issue:**
+/
+
+---
+
+<h3 align="center">
     ✏️ 1. Theme Switching Bug
 </h3>
 
@@ -34,17 +70,5 @@ useEffect(() => {
 }, [theme]);
 ```
 
----
-
-<h3 align="center">
-    ❌ 2. Theme Unavailability Issue
-</h3>
-
-**Description:**
-Adding the default theme may render other themes unusable due to the inability to select them.
-
-**Status:**
-✅ Resolved
-
-**Workaround:**
-No workaround is needed as the issue has been resolved in the latest update.
+**Corresponding issue:**
+/

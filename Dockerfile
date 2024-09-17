@@ -1,5 +1,10 @@
 FROM node AS build
 
+LABEL org.opencontainers.image.description "Dockstat is an OpenSource Docker statistics webservice. It relies on the dockstatapi"
+LABEL org.opencontainers.image.source=https://github.com/its4nik/dockstat
+LABEL org.opencontainers.image.licenses=MPL-2.0
+
+
 WORKDIR /build
 
 # Set environment variables for build time
