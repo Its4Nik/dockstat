@@ -28,6 +28,8 @@ FROM node:slim
 
 WORKDIR /app
 
+RUN apk add --no-cache curl
+
 # Copy build artifacts and entrypoint script from the build stage
 COPY --from=build /build/build /app/build
 COPY --from=build /build/entrypoint.sh /app
@@ -36,5 +38,6 @@ RUN npm install -g serve
 
 EXPOSE 3000
 
+HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
 # Run the entrypoint script
 ENTRYPOINT [ "bash", "/app/entrypoint.sh" ]
