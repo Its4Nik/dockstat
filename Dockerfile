@@ -31,11 +31,13 @@ WORKDIR /app
 # Copy build artifacts and entrypoint script from the build stage
 COPY --from=build /build/build /app/build
 COPY --from=build /build/entrypoint.sh /app
+COPY --from=build /build/healthcheck.js /app/healthcheck.js
 
 RUN npm install -g serve
 
 EXPOSE 3000
 
-HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 CMD node /app/healthcheck.js
+
 # Run the entrypoint script
 ENTRYPOINT [ "bash", "/app/entrypoint.sh" ]
