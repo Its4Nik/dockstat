@@ -9,7 +9,7 @@ SECRET="${SECRET//\"}"
 LOGO_SIZE="${LOGO_SIZE//\"}"
 DM_LOGO_COLOR="${DM_LOGO_COLOR//\"}"
 LM_LOGO_COLOR="${LM_LOGO_COLOR//\"}"
-CUP_HOST="${CUP_HOST//\}"
+CUP_HOST="${CUP_HOST//\"}"
 
 if [[ -z "${DEFAULT_THEME}" ]]; then
     DEFAULT_THEME="dracula"
