@@ -35,11 +35,11 @@ const CupIntegration = ({ containerImage, cupHost }) => {
                     {result.images[containerImage] ? (
                         <ArrowUpwardIcon style={{ color: 'green' }} />
                     ) : (
-                        <div />
+                        <></>
                     )}
                 </div>
             ) : (
-                <p>Loading...</p>
+                <></>
             )}
         </>
     );
