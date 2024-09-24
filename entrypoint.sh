@@ -71,6 +71,14 @@ echo "LIGHT MODE LOGO COLOR : ${LM_LOGO_COLOR}"
 echo "CUP_HOST              : ${CUP_HOST}"
 echo "================== DockStat =================="
 
+############################################
+# Setup CronJob to retrieve details from CUP
+
+if [[ -z "$CUP_HOST" ]]; then
+    { crontab -l 2>/dev/null; echo "0 0 * * * bash /app/cronjob.sh"; } | crontab -
+    bash /app/cronjob.sh "$CUP_HOST"
+fi
+
 echo "
 {
     \"API_URL\": \"${API_URL}\",
