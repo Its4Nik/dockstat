@@ -9,6 +9,7 @@ SECRET="${SECRET//\"}"
 LOGO_SIZE="${LOGO_SIZE//\"}"
 DM_LOGO_COLOR="${DM_LOGO_COLOR//\"}"
 LM_LOGO_COLOR="${LM_LOGO_COLOR//\"}"
+CUP_HOST="${CUP_HOST//\}"
 
 if [[ -z "${DEFAULT_THEME}" ]]; then
     DEFAULT_THEME="dracula"
@@ -67,6 +68,7 @@ echo "LOGO SIZE             : ${LOGO_SIZE}"
 echo "TAILWIND LOGO SIZE    : ${TAILWIND_LOGO_SIZE}"
 echo "DARK MODE LOGO COLOR  : ${DM_LOGO_COLOR}"
 echo "LIGHT MODE LOGO COLOR : ${LM_LOGO_COLOR}"
+echo "CUP_HOST              : ${CUP_HOST}"
 echo "================== DockStat =================="
 
 echo "
@@ -76,7 +78,8 @@ echo "
     \"SECRET\": \"${SECRET}\",
     \"LOGO_SIZE\": \"${TAILWIND_LOGO_SIZE}\",
     \"DARK_MODE_LOGO_COLOR\": \"$(echo "${DM_LOGO_COLOR}" | tr -d '#')\",
-    \"LIGHT_MODE_LOGO_COLOR\": \"$(echo "${LM_LOGO_COLOR}" | tr -d '#')\"
+    \"LIGHT_MODE_LOGO_COLOR\": \"$(echo "${LM_LOGO_COLOR}" | tr -d '#')\",
+    \"CUP_HOST\": \"${CUP_HOST}\"
 }
 " > /app/build/config.json
 

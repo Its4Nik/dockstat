@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import toast from 'react-toastify'
+import toast from 'react-toastify';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
-const CupIntegration = ({ containerName, cupHost }) => {
-    const [result, setResult] = useState('');
+const CupIntegration = ({ containerImage, cupHost }) => {
+    const [result, setResult] = useState(null);
 
     useEffect(() => {
         if (!cupHost) return;
@@ -25,4 +26,23 @@ const CupIntegration = ({ containerName, cupHost }) => {
 
         fetchData();
     }, [cupHost]);
+
+    return (
+        <>
+            {result && result.images && result.images[containerImage] !== undefined ? (
+                <div className="container">
+                    <p>Container: {containerImage}</p>
+                    {result.images[containerImage] ? (
+                        <ArrowUpwardIcon style={{ color: 'green' }} />
+                    ) : (
+                        <div />
+                    )}
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </>
+    );
 }
+
+export default CupIntegration;

@@ -8,22 +8,24 @@ import Controls from './components/Controls';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 function App() {
-    const [data, setData] = useState({});
-    const [isInitialLoad, setIsInitialLoad] = useState(true);
-    const [theme, setTheme] = useState('');
-    const [intervalTime, setIntervalTime] = useState(10000);
-    const [loadingTheme, setLoadingTheme] = useState(false);
-    const [apihost, setApihost] = useState('');
-    const [apiKey, setApiKey] = useState('');
-    const [logoSize, setLogoSize] = useState('');
-    const [darkModeLogoColor, setDarkModeLogoColor] = useState('');
-    const [lightModeLogoColor, setLightModeLogoColor] = useState('');
-    const [sortOption, setSortOption] = useState('name-asc');
-    const [defaultTheme, setDefaultTheme] = useState('');
-    const [gridSize, setGridSize] = useState('compact');
+    const [ data, setData] = useState({});
+    const [ isInitialLoad, setIsInitialLoad] = useState(true);
+    const [ theme, setTheme] = useState('');
+    const [ intervalTime, setIntervalTime] = useState(10000);
+    const [ loadingTheme, setLoadingTheme] = useState(false);
+    const [ apihost, setApihost] = useState('');
+    const [ apiKey, setApiKey] = useState('');
+    const [ cupHost, setCupHost ] = useState('');
+    const [ logoSize, setLogoSize] = useState('');
+    const [ darkModeLogoColor, setDarkModeLogoColor] = useState('');
+    const [ lightModeLogoColor, setLightModeLogoColor] = useState('');
+    const [ sortOption, setSortOption] = useState('name-asc');
+    const [ defaultTheme, setDefaultTheme] = useState('');
+    const [ gridSize, setGridSize] = useState('compact');
 
     const handleConfigLoaded = (configData) => {
         setApihost(configData.API_URL);
+        setCupHost(configData.CUP_HOST)
         setApiKey(configData.SECRET);
         setLogoSize(configData.LOGO_SIZE);
         setDarkModeLogoColor(configData.DARK_MODE_LOGO_COLOR);
@@ -103,6 +105,7 @@ function App() {
                             gridSize={gridSize}
                             apiKey={apiKey}
                             apihost={apihost}
+                            cupHost={cupHost}
                         />
                     );
                 })

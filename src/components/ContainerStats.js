@@ -3,6 +3,7 @@ import { FaMemory, FaMicrochip, FaArrowDown, FaArrowUp, FaLink } from 'react-ico
 import { BsFillHddNetworkFill } from "react-icons/bs";
 import { ToastContainer } from 'react-toastify';
 import AdvancedStats from './AdvancedStats';
+import CupIntegration from './CupIntegration';
 import 'react-toastify/dist/ReactToastify.css';
 import './css/ContainerStats.css';
 import './css/LogoSizes.css';
@@ -42,7 +43,7 @@ function parseTags(tags) {
     });
 }
 
-function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor }) {
+function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor, containerImage, cupHost }) {
     const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon, id, networkMode, tags } = container;
     const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
     const cpuPercentage = calculateCpuPercentage(cpu_usage, 100000000000000);
@@ -103,11 +104,20 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
                     {link ? (
                         <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center">
                             <FaLink className="mr-1 text-primary" />
-                            <h3 className="font-semibold text-lg ml-1">{containerName}</h3>
+                            <h3 className="font-semibold text-lg ml-1">{containerName}
+                                <CupIntegration
+                                    containerImage={containerImage}
+                                />
+                            </h3>
                         </a>
                     ) : (
                         <div className="flex items-center">
-                            <h3 className="font-semibold text-lg ml-0">{containerName}</h3>
+                            <h3 className="font-semibold text-lg ml-0">{containerName}
+                                <CupIntegration
+                                    containerImage={containerImage}
+                                    cupHost={cupHost}
+                                />
+                            </h3>
                         </div>
                     )}
                 </div>
