@@ -30,6 +30,7 @@ Check the documentation (WIP) [here](https://outline.itsnik.de/s/dockstat).
 - [ ] Add "Secondary API Host" for high availability
 - [ ] Persistent theme/refresh rate choice
 - [X] Changable size of "Container Cards"
+- [ ] [Cup](https://github.com/sergi0g/cup/) integration
 
 ---
 
