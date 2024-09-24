@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import toast from 'react-toastify';
+import { toast } from 'react-toastify';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 const CupIntegration = ({ containerImage, cupHost }) => {
