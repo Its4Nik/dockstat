@@ -4,7 +4,7 @@ import { FaArrowDown } from "react-icons/fa";
 import ContainerStats from './ContainerStats';
 import HostUsageStats from './HostUsageStats';
 
-function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLogoColor, gridSize , apihost, apiKey}) {
+function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLogoColor, gridSize , apihost, apiKey, cupHost}) {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [contentHeight, setContentHeight] = useState('auto');
     const contentRef = useRef(null);
@@ -61,6 +61,8 @@ function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLog
                     {containers.map((container) => (
                         <ContainerStats
                             key={container.name}
+                            cupHost={cupHost}
+                            containerImage={container.image}
                             container={container}
                             logoSize={logoSize}
                             darkModeLogoColor={darkModeLogoColor}
