@@ -101,7 +101,7 @@ function AdvancedStats({
 										className={`w-20 container-icon`}
 									/>
 								) : (
-									<span className="text-secondary">N/A</span>
+									<span className="text-secondary">No icon for this container available.</span>
 								)}
 							</div>
 						</div>
