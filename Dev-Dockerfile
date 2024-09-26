@@ -19,8 +19,8 @@ ENV REACT_APP_SECRET=${REACT_APP_SECRET}
 COPY . /build
 
 # Install dependencies and build the React app
-RUN npm install 
-RUN npm audit fix 
+RUN npm install --force
+RUN npm audit fix --force
 RUN npm run build 
 RUN chmod +x /build/entrypoint.sh
 
