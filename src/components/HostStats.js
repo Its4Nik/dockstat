@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaArrowDown } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 import ContainerStats from './ContainerStats';
 import HostUsageStats from './HostUsageStats';
@@ -28,12 +28,12 @@ function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLog
 
     useEffect(() => {
         if (contentRef.current) {
-            setContentHeight(isCollapsed ? '0px' : `${contentRef.current.scrollHeight}px`);
+            setContentHeight(isCollapsed ? '0px' : `${contentRef.current.scrollHeight + 0}px`);
         }
     }, [isCollapsed]);
 
     return (
-        <div className="mb-6 border border-base-300 rounded-lg p-4">
+        <div className="mb-6 border border-base-300 rounded-lg p-6 mx-4 shadow-xl">
             <div
                 className="flex items-center cursor-pointer"
                 onClick={toggleCollapse}
@@ -57,7 +57,7 @@ function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLog
                 className="transition-all duration-500 ease-in-out overflow-hidden"
                 style={{ maxHeight: contentHeight, opacity: isCollapsed ? '0' : '1' }}
             >
-                <div className={`mt-2 grid gap-3 grid-cols-1 ${getGridClass(gridSize)}`}>
+                <div className={`mt-2 grid gap-3 grid-cols-1 ${getGridClass(gridSize)} mb-6`}>
                     {containers.map((container) => (
                         <ContainerStats
                             key={container.name}
@@ -69,6 +69,22 @@ function HostStats({ host, containers, logoSize, darkModeLogoColor, lightModeLog
                     ))}
                 </div>
             </div>
+            <div
+                className="flex items-center"
+            >
+                <span
+                    className={`mr-2  mb-1 transition-transform duration-300 ease-out ${isCollapsed ? 'rotate-180' : ''}`}
+                >
+                    
+                </span>
+                { isCollapsed ? (
+                    <></>
+                ) : (
+                    <div className="mx-auto cursor-pointer" onClick={toggleCollapse} p-2> 
+                        <FaArrowUp />
+                    </div>
+                )}
+                </div>
         </div>
     );
 }

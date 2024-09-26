@@ -74,8 +74,10 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 	const parsedTags = tags ? parseTags(tags) : [];
 	return (
 		<div
-  			className="card shadow-md p-4 rounded-lg border border-base-300 relative transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:before:blur-md hover:before:bg-primary/30 hover:before:absolute hover:before:-inset-1 hover:before:rounded-lg"
-  			onClick={() => setIsModalOpen(true)}
+			className="card shadow-md p-4 rounded-lg border border-base-300 relative hover:shadow-xl ease-in-out transition-all space-y-1 cursor-pointer"
+			onClick={() => {
+				setIsModalOpen(true);
+			}}
 		>
 			<ToastContainer />
 
@@ -91,17 +93,16 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 				isModalOpen={isModalOpen} // Pass modal state
 				onModelClose={() => {
 					setIsModalOpen(false);
-				}} // Pass modal toggle function
+				}}
 			/>
 
-			<div className="flex items-center justify-between">
+			<div className="flex items-center justify-between cursor">
 				<div className="flex items-center">
 					<div
-						className={`status-orb ${getStatusClass(state)} ${
-							state === "running" || state === "starting" || state === "error"
+						className={`status-orb ${getStatusClass(state)} ${state === "running" || state === "starting" || state === "error"
 								? "pulse"
 								: ""
-						}`}
+							}`}
 					></div>
 					{link ? (
 						<a
@@ -160,17 +161,15 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 				<>
 					<div className="flex items-center mt-2">
 						<FaArrowUp
-							className={`network-stats ${
-								current_net_tx !== 0 ? "pulse" : ""
-							} mr-2 text-info`}
+							className={`network-stats ${current_net_tx !== 0 ? "pulse" : ""
+								} mr-2 text-info`}
 						/>
 						<p>{formatBytesToMB(current_net_tx)} MB/s</p>
 					</div>
 					<div className="flex items-center mt-2">
 						<FaArrowDown
-							className={`network-stats ${
-								current_net_rx !== 0 ? "pulse" : ""
-							} mr-2 text-info`}
+							className={`network-stats ${current_net_rx !== 0 ? "pulse" : ""
+								} mr-2 text-info`}
 						/>
 						<p>{formatBytesToMB(current_net_rx)} MB/s</p>
 					</div>
@@ -179,11 +178,10 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 
 			{isSimpleIcon ? (
 				<img
-					src={`https://cdn.simpleicons.org/${simpleIconName}${
-						lightModeLogoColor && darkModeLogoColor
+					src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor
 							? `/${lightModeLogoColor}/${darkModeLogoColor}`
 							: ""
-					}`}
+						}`}
 					alt={`${simpleIconName} Icon`}
 					className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`}
 				/>
