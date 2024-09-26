@@ -5,7 +5,7 @@ import { FaClipboard, FaClipboardCheck } from "react-icons/fa";
 import './css/AdvancedStats.css';
 import './css/ModalAnimations.css';
 
-function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoColor, lightModeLogoColor, networkMode }) {
+function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoColor, lightModeLogoColor, networkMode, containerImage }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isClipboardChecked, setIsClipboardChecked] = useState(false);
 
@@ -63,6 +63,11 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
                             <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">
                                 <h3 className="text-md font-semibold mb-1">Container Name</h3>
                                 <p>{containerName}</p>
+                            </div>
+
+                            <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">
+                                <h3 className="text-md font-semibold mb-1">Container Image</h3>
+                                <p>{containerImage}</p>
                             </div>
 
                             <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">

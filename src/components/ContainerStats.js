@@ -43,7 +43,7 @@ function parseTags(tags) {
 }
 
 function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor }) {
-    const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon, id, networkMode, tags } = container;
+    const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon, id, networkMode, tags, image } = container;
     const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
     const cpuPercentage = calculateCpuPercentage(cpu_usage, 100000000000000);
     let isHostNetwork = "";
@@ -94,6 +94,7 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
                     icon={icon}
                     darkModeLogoColor={darkModeLogoColor}
                     lightModeLogoColor={lightModeLogoColor}
+                    containerImage={container.image}
                 />
             </div>
 
