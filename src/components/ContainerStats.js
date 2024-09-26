@@ -84,8 +84,10 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
                         </span>
                     ))}
                 </div>
+            </div>
 
-                {/* Advanced Stats Icon */}
+            {/* Advanced Stats */}
+            <div className="w-full h-full">
                 <AdvancedStats
                     networkMode={networkMode}
                     id={id}
