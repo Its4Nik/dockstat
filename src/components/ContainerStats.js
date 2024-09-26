@@ -44,7 +44,7 @@ function parseTags(tags) {
 function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor }) {
     const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon, id, networkMode, tags, image } = container;
     const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
-    const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const cpuPercentage = calculateCpuPercentage(cpu_usage, 100000000000000);
     let isHostNetwork = "";
 
@@ -62,16 +62,6 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
     return (
         <div className="card shadow-md p-4 rounded-lg border border-base-300 relative" onClick={() => setIsModalOpen(true)}>
             <ToastContainer />
-
-            <div className="absolute top-3 right-2 flex flex-wrap items-center justify-between mb-2">
-                <div className="flex mr-6 flex-wrap gap-1">
-                    {parsedTags.map((tag, index) => (
-                        <span key={index} className={`${tag.colorClass} text-xs font-semibold py-1 px-2 rounded-xl`}>
-                            {tag.tagName}
-                        </span>
-                    ))}
-                </div>
-            </div>
 
             <AdvancedStats
                 networkMode={networkMode}
@@ -92,11 +82,25 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
                     {link ? (
                         <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center">
                             <FaLink className="mr-1 text-primary" />
-                            <h3 className="font-semibold text-lg ml-1">{containerName}</h3>
+                            <h3 className="font-semibold text-lg ml-1 mr-2">{containerName}</h3>
+                            <div>
+                                {parsedTags.map((tag, index) => (
+                                    <span key={index} className={`${tag.colorClass} text-xs font-semibold ml-2 px-2 rounded-xl`}>
+                                        {tag.tagName}
+                                    </span>
+                                ))}
+                            </div>
                         </a>
                     ) : (
                         <div className="flex items-center">
-                            <h3 className="font-semibold text-lg ml-0">{containerName}</h3>
+                            <h3 className="font-semibold text-lg ml-0 mr-2">{containerName}</h3>
+                            <div>
+                                {parsedTags.map((tag, index) => (
+                                    <span key={index} className={`${tag.colorClass} text-xs font-semibold ml-2 px-2 rounded-xl`}>
+                                        {tag.tagName}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     )}
                 </div>

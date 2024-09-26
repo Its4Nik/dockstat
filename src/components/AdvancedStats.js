@@ -54,7 +54,7 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
                             </div>
                             <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">
                                 <h3 className="text-md font-semibold mb-1">Image</h3>
-                                <img src={containerImage} alt="Container Image" className="rounded-lg" />
+                                <p>{containerImage}</p>
                             </div>
                             <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">
                                 <h3 className="text-md font-semibold mb-1">Link</h3>
@@ -74,16 +74,16 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
                                         alt={`${simpleIconName} Icon`}
                                         className={`w-20 container-icon`}
                                     />
+                                ) : icon ? (
+                                    <img src={`/icons/${icon}`} alt="Container Icon" className={`w-20 container-icon`} />
                                 ) : (
-                                    icon && (
-                                        <img src={`/icons/${icon}`} alt="Container Icon" className={`w-20 container-icon`} />
-                                    )
+                                    <span className="text-secondary">N/A</span>
                                 )}
                             </div>
                         </div>
 
                         <button
-                            onClick={() => setIsModalOpen(false)} // Ensure this closes the modal
+                            onClick={() => setIsModalOpen(false)}
                             className="btn btn-secondary mt-4 w-full"
                         >
                             Close
