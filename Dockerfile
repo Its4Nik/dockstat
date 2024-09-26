@@ -32,7 +32,6 @@ WORKDIR /app
 COPY --from=build /build/build /app/build
 COPY --from=build /build/entrypoint.sh /app
 COPY --from=build /build/healthcheck.js /app/healthcheck.js
-COPY --from=build /build/cronjob.sh /app/cronjob.sh
 
 RUN npm install -g serve
 
