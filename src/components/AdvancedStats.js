@@ -25,7 +25,7 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
     return (
         <>
             <div
-                className="w-full h-full"
+                className="w-full h-full block"
                 onClick={handleIconClick}
             />
 
