@@ -67,86 +67,87 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
     const parsedTags = tags ? parseTags(tags) : [];
 
     return (
-        <div className="card shadow-md p-4 rounded-lg border border-base-300 relative" onClick={onModalOpen}>
-            <ToastContainer />
+        <AdvancedStats
+            networkMode={networkMode}
+            id={id}
+            containerName={containerName}
+            link={link}
+            icon={icon}
+            darkModeLogoColor={darkModeLogoColor}
+            lightModeLogoColor={lightModeLogoColor}
+            containerImage={image}>
+            <div className="card shadow-md p-4 rounded-lg border border-base-300 relative" onClick={onModalOpen}>
+                <ToastContainer />
 
-            {/* Tags and Advanced Stats aligned */}
-            <div className="absolute top-3 right-2 flex flex-wrap items-center justify-between mb-2">
-                <div className="flex mr-6 flex-wrap gap-1">
-                    {parsedTags.map((tag, index) => (
-                        <span key={index} className={`${tag.colorClass} text-xs font-semibold py-1 px-2 rounded-xl`}>
-                            {tag.tagName}
-                        </span>
-                    ))}
+                {/* Tags and Advanced Stats aligned */}
+                <div className="absolute top-3 right-2 flex flex-wrap items-center justify-between mb-2">
+                    <div className="flex mr-6 flex-wrap gap-1">
+                        {parsedTags.map((tag, index) => (
+                            <span key={index} className={`${tag.colorClass} text-xs font-semibold py-1 px-2 rounded-xl`}>
+                                {tag.tagName}
+                            </span>
+                        ))}
+                    </div>
                 </div>
-            </div>
 
-            {/* Advanced Stats */}
-            <div className="w-full h-full">
-                <AdvancedStats
-                    networkMode={networkMode}
-                    id={id}
-                    containerName={containerName}
-                    link={link}
-                    icon={icon}
-                    darkModeLogoColor={darkModeLogoColor}
-                    lightModeLogoColor={lightModeLogoColor}
-                    containerImage={image}
-                />
-            </div>
+                {/* Advanced Stats */}
 
-            <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                    <div className={`status-orb ${getStatusClass(state)} ${state === 'running' || state === 'starting' || state === 'error' ? 'pulse' : ''}`}></div>
-                    {link ? (
-                        <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                            <FaLink className="mr-1 text-primary" />
-                            <h3 className="font-semibold text-lg ml-1">{containerName}</h3>
-                        </a>
-                    ) : (
-                        <div className="flex items-center">
-                            <h3 className="font-semibold text-lg ml-0">{containerName}</h3>
-                        </div>
-                    )}
+
+
+
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                        <div className={`status-orb ${getStatusClass(state)} ${state === 'running' || state === 'starting' || state === 'error' ? 'pulse' : ''}`}></div>
+                        {link ? (
+                            <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                <FaLink className="mr-1 text-primary" />
+                                <h3 className="font-semibold text-lg ml-1">{containerName}</h3>
+                            </a>
+                        ) : (
+                            <div className="flex items-center">
+                                <h3 className="font-semibold text-lg ml-0">{containerName}</h3>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
 
-            <div className="flex items-center mt-2">
-                <FaMicrochip className="mr-2 text-primary" />
-                <p>{cpuPercentage}%</p>
-            </div>
-            <div className="flex items-center mt-2">
-                <FaMemory className="mr-2 text-primary" />
-                <p>{formatBytesToGB(mem_usage)} GB / {formatBytesToGB(mem_limit)} GB</p>
-            </div>
-            {isHostNetwork ? (
                 <div className="flex items-center mt-2">
-                    <BsFillHddNetworkFill className="mr-2 text-primary" />
-                    <p>Host network</p>
+                    <FaMicrochip className="mr-2 text-primary" />
+                    <p>{cpuPercentage}%</p>
                 </div>
-            ) : (
-                <>
+                <div className="flex items-center mt-2">
+                    <FaMemory className="mr-2 text-primary" />
+                    <p>{formatBytesToGB(mem_usage)} GB / {formatBytesToGB(mem_limit)} GB</p>
+                </div>
+                {isHostNetwork ? (
                     <div className="flex items-center mt-2">
-                        <FaArrowUp className={`network-stats ${current_net_tx !== 0 ? 'pulse' : ''} mr-2 text-info`} />
-                        <p>{formatBytesToMB(current_net_tx)} MB/s</p>
+                        <BsFillHddNetworkFill className="mr-2 text-primary" />
+                        <p>Host network</p>
                     </div>
-                    <div className="flex items-center mt-2">
-                        <FaArrowDown className={`network-stats ${current_net_rx !== 0 ? 'pulse' : ''} mr-2 text-info`} />
-                        <p>{formatBytesToMB(current_net_rx)} MB/s</p>
-                    </div>
-                </>
-            )}
+                ) : (
+                    <>
+                        <div className="flex items-center mt-2">
+                            <FaArrowUp className={`network-stats ${current_net_tx !== 0 ? 'pulse' : ''} mr-2 text-info`} />
+                            <p>{formatBytesToMB(current_net_tx)} MB/s</p>
+                        </div>
+                        <div className="flex items-center mt-2">
+                            <FaArrowDown className={`network-stats ${current_net_rx !== 0 ? 'pulse' : ''} mr-2 text-info`} />
+                            <p>{formatBytesToMB(current_net_rx)} MB/s</p>
+                        </div>
+                    </>
+                )}
 
-            {isSimpleIcon ? (
-                <img
-                    src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor ? `/${lightModeLogoColor}/${darkModeLogoColor}` : ''}`}
-                    alt={`${simpleIconName} Icon`}
-                    className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`}
-                />
-            ) : icon && (
-                <img src={`/icons/${icon}`} alt="Container Icon" className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`} />
-            )}
-        </div>
+                {isSimpleIcon ? (
+                    <img
+                        src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor ? `/${lightModeLogoColor}/${darkModeLogoColor}` : ''}`}
+                        alt={`${simpleIconName} Icon`}
+                        className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`}
+                    />
+                ) : icon && (
+                    <img src={`/icons/${icon}`} alt="Container Icon" className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`} />
+                )}
+            </div>
+        </AdvancedStats>
     );
 }
 
