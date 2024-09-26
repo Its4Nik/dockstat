@@ -53,6 +53,10 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
                                 <p>{containerName}</p>
                             </div>
                             <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">
+                                <h3 className="text-md font-semibold mb-1">Image</h3>
+                                <img src={containerImage} alt="Container Image" className="rounded-lg" />
+                            </div>
+                            <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">
                                 <h3 className="text-md font-semibold mb-1">Link</h3>
                                 {link ? (
                                     <a href={link} target="_blank" rel="noopener noreferrer" className="text-primary">
@@ -62,10 +66,24 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
                                     <p>No link available</p>
                                 )}
                             </div>
+                            <div className="bg-base-200 p-2 rounded-lg shadow-md text-center">
+                                <h3 className="text-md font-semibold mb-1">Logo</h3>
+                                {isSimpleIcon ? (
+                                    <img
+                                        src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor ? `/${lightModeLogoColor}/${darkModeLogoColor}` : ''}`}
+                                        alt={`${simpleIconName} Icon`}
+                                        className={`w-20 container-icon`}
+                                    />
+                                ) : (
+                                    icon && (
+                                        <img src={`/icons/${icon}`} alt="Container Icon" className={`w-20 container-icon`} />
+                                    )
+                                )}
+                            </div>
                         </div>
 
                         <button
-                            onClick={() => setIsModalOpen(false)} // Close modal
+                            onClick={() => setIsModalOpen(false)} // Ensure this closes the modal
                             className="btn btn-secondary mt-4 w-full"
                         >
                             Close

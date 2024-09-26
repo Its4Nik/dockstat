@@ -82,8 +82,8 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
                 darkModeLogoColor={darkModeLogoColor}
                 lightModeLogoColor={lightModeLogoColor}
                 containerImage={image}
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
+                isModalOpen={isModalOpen} // Pass modal state
+                setIsModalOpen={setIsModalOpen} // Pass modal toggle function
             />
 
             <div className="flex items-center justify-between">
