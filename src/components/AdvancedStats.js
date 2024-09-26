@@ -25,8 +25,8 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
 
     return (
         <>
-            <IoIosInformationCircleOutline
-                className="w-full h-full"
+            <div
+                className="w-full h-full background bg-slate-900"
                 onClick={handleIconClick}
             />
 
