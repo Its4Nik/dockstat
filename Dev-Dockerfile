@@ -20,7 +20,6 @@ COPY . /build
 
 # Install dependencies and build the React app
 RUN npm install --force
-RUN npm audit fix --force
 RUN npm run build 
 RUN chmod +x /build/entrypoint.sh
 
