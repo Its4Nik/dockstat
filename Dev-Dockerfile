@@ -19,10 +19,10 @@ ENV REACT_APP_SECRET=${REACT_APP_SECRET}
 COPY . /build
 
 # Install dependencies and build the React app
-RUN npm install --force && \
-    npm audit fix --force && \
-    npm run build && \
-    chmod +x /build/entrypoint.sh
+RUN npm install 
+RUN npm audit fix 
+RUN npm run build 
+RUN chmod +x /build/entrypoint.sh
 
 # Final stage
 FROM node:slim
