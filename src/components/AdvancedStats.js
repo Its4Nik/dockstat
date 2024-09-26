@@ -24,7 +24,11 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
     const simpleIconName = isSimpleIcon ? icon.substring(3).toLowerCase() : null; // Convert to lowercase for the slug
 
     return (
-        <div onClick={handleIconClick}>
+        <>
+            <IoIosInformationCircleOutline
+                className="w-full h-full"
+                onClick={handleIconClick}
+            />
 
             {/* Modal for displaying the variables */}
             <CSSTransition
@@ -111,7 +115,7 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
                     </div>
                 </div>
             </CSSTransition>
-        </div>
+        </>
     );
 }
 
