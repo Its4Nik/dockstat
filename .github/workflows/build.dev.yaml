@@ -21,6 +21,6 @@ jobs:
                 github-push-secret: ${{secrets.GITHUB_TOKEN}}
                 docker-image-name: dockstat
                 docker-image-tag: dev # optional
-                dockerfile-path: Dockerfile # optional
+                dockerfile-path: Dev-Dockerfile # optional
                 build-context: . # optional
                 build-only: false # optional

@@ -42,7 +42,7 @@ function parseTags(tags) {
     });
 }
 
-function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor }) {
+function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoColor, onModalOpen }) {
     const { name, state, cpu_usage, mem_usage, mem_limit, current_net_rx, current_net_tx, link, icon, id, networkMode, tags, image } = container;
     const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
     const cpuPercentage = calculateCpuPercentage(cpu_usage, 100000000000000);
@@ -55,11 +55,9 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
     const containerName = name.startsWith('/') ? name.substring(1) : name;
 
     const isSimpleIcon = icon && icon.startsWith("SI:");
-    const simpleIconName = isSimpleIcon ? icon.substring(3).toLowerCase() : null; // Convert to lowercase for the slug
+    const simpleIconName = isSimpleIcon ? icon.substring(3).toLowerCase() : null;
 
-    if (networkMode === "Host") {
-        isHostNetwork = "1";
-    } else if (networkMode === "host") {
+    if (networkMode === "Host" || networkMode === "host") {
         isHostNetwork = "1";
     } else {
         isHostNetwork = "";
@@ -69,20 +67,14 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
     const parsedTags = tags ? parseTags(tags) : [];
 
     return (
-        <div
-            className="card shadow-md p-4 rounded-lg border border-base-300 relative cursor-pointer"
-            onClick={() => setIsModalOpen(true)} // Make the whole card clickable
-        >
+        <div className="card shadow-md p-4 rounded-lg border border-base-300 relative" onClick={onModalOpen}>
             <ToastContainer />
 
             {/* Tags and Advanced Stats aligned */}
             <div className="absolute top-3 right-2 flex flex-wrap items-center justify-between mb-2">
-                {/* Display Tags */}
                 <div className="flex mr-6 flex-wrap gap-1">
                     {parsedTags.map((tag, index) => (
-                        <span
-                            key={index}
-                            className={`${tag.colorClass} text-xs font-semibold py-1 px-2 rounded-xl`}>
+                        <span key={index} className={`${tag.colorClass} text-xs font-semibold py-1 px-2 rounded-xl`}>
                             {tag.tagName}
                         </span>
                     ))}
@@ -99,7 +91,7 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
                     icon={icon}
                     darkModeLogoColor={darkModeLogoColor}
                     lightModeLogoColor={lightModeLogoColor}
-                    containerImage={container.image}
+                    containerImage={image}
                 />
             </div>
 
