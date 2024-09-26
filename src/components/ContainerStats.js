@@ -69,7 +69,10 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
     const parsedTags = tags ? parseTags(tags) : [];
 
     return (
-        <div className="card shadow-md p-4 rounded-lg border border-base-300 relative">
+        <div
+            className="card shadow-md p-4 rounded-lg border border-base-300 relative cursor-pointer"
+            onClick={() => setIsModalOpen(true)} // Make the whole card clickable
+        >
             <ToastContainer />
 
             {/* Tags and Advanced Stats aligned */}

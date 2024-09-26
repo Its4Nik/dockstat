@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { IoIosInformationCircleOutline } from "react-icons/io";
 import { CSSTransition } from 'react-transition-group';
 import { FaClipboard, FaClipboardCheck } from "react-icons/fa";
 import './css/AdvancedStats.css';
@@ -26,7 +25,7 @@ function AdvancedStats({ id, containerName, link, icon, logoSize, darkModeLogoCo
     return (
         <>
             <div
-                className="w-full h-full background bg-slate-900"
+                className="w-full h-full"
                 onClick={handleIconClick}
             />
 
