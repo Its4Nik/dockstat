@@ -74,10 +74,8 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 	const parsedTags = tags ? parseTags(tags) : [];
 	return (
 		<div
-			className="card shadow-md p-4 rounded-lg border border-base-300 relative"
-			onClick={(event) => {
-				setIsModalOpen(true);
-			}}
+  			className="card shadow-md p-4 rounded-lg border border-base-300 relative transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:before:blur-md hover:before:bg-primary/30 hover:before:absolute hover:before:-inset-1 hover:before:rounded-lg"
+  			onClick={() => setIsModalOpen(true)}
 		>
 			<ToastContainer />
 
