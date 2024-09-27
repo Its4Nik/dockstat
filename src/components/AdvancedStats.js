@@ -86,19 +86,18 @@ function AdvancedStats({
 								<h3 className="text-md font-semibold mb-1">Logo</h3>
 								{isSimpleIcon ? (
 									<img
-										src={`https://cdn.simpleicons.org/${simpleIconName}${
-											lightModeLogoColor && darkModeLogoColor
-												? `/${lightModeLogoColor}/${darkModeLogoColor}`
-												: ""
-										}`}
+										src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor
+											? `/${lightModeLogoColor}/${darkModeLogoColor}`
+											: ""
+											}`}
 										alt={`${simpleIconName} Icon`}
-										className={`w-20 container-icon`}
+										className={`w-20 container-icon mx-auto`}
 									/>
 								) : icon ? (
 									<img
 										src={`/icons/${icon}`}
 										alt="Container Icon"
-										className={`w-20 container-icon`}
+										className={`w-20 container-icon mx-auto`}
 									/>
 								) : (
 									<span className="text-secondary">No icon for this container available.</span>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaMemory, FaMicrochip, FaArrowDown, FaArrowUp, FaLink } from "react-icons/fa";
+import { PiDownloadDuotone } from "react-icons/pi";
 import { BsFillHddNetworkFill } from "react-icons/bs";
 import { ToastContainer } from "react-toastify";
 import AdvancedStats from "./AdvancedStats";
@@ -56,6 +57,7 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 		networkMode,
 		tags,
 		image,
+		update_available,
 	} = container;
 	const [prevCpuUsage, setPrevCpuUsage] = useState(cpu_usage);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,6 +69,7 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 	}, [cpu_usage]);
 
 	const containerName = name.startsWith("/") ? name.substring(1) : name;
+	const containerUpdate_available = update_available === true ? "1" : "";
 	const isSimpleIcon = icon && icon.startsWith("SI:");
 	const simpleIconName = isSimpleIcon ? icon.substring(3).toLowerCase() : null;
 	isHostNetwork = networkMode === "Host" || networkMode === "host" ? "1" : "";
@@ -100,8 +103,8 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 				<div className="flex items-center">
 					<div
 						className={`status-orb ${getStatusClass(state)} ${state === "running" || state === "starting" || state === "error"
-								? "pulse"
-								: ""
+							? "pulse"
+							: ""
 							}`}
 					></div>
 					{link ? (
@@ -112,6 +115,11 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 							className="flex items-center"
 						>
 							<FaLink className="mr-1 text-primary" />
+							{containerUpdate_available ? (
+								<PiDownloadDuotone className="mr-1.5 animate-bounce" />
+							) : (
+								<></>
+							)}
 							<h3 className="font-semibold text-lg ml-1 mr-2">{containerName}</h3>
 							<div>
 								{parsedTags.map((tag, index) => (
@@ -126,6 +134,11 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 						</a>
 					) : (
 						<div className="flex items-center">
+							{containerUpdate_available ? (
+								<PiDownloadDuotone className="mr-1.5 animate-bounce" />
+							) : (
+								<></>
+							)}
 							<h3 className="font-semibold text-lg ml-0 mr-2">{containerName}</h3>
 							<div>
 								{parsedTags.map((tag, index) => (
@@ -179,8 +192,8 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 			{isSimpleIcon ? (
 				<img
 					src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor
-							? `/${lightModeLogoColor}/${darkModeLogoColor}`
-							: ""
+						? `/${lightModeLogoColor}/${darkModeLogoColor}`
+						: ""
 						}`}
 					alt={`${simpleIconName} Icon`}
 					className={`${logoSize} container-icon absolute bottom-0 right-0 p-2`}
