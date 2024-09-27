@@ -8,26 +8,16 @@ import "react-toastify/dist/ReactToastify.css";
 import "./css/ContainerStats.css";
 import "./css/LogoSizes.css";
 import "./css/Tags.css";
-import { ToastContainer } from "react-toastify";
-import AdvancedStats from "./AdvancedStats";
-import "react-toastify/dist/ReactToastify.css";
-import "./css/ContainerStats.css";
-import "./css/LogoSizes.css";
-import "./css/Tags.css";
 
 function formatBytesToMB(bytes) {
-	return (bytes / (1024 * 1024)).toFixed(2);
 	return (bytes / (1024 * 1024)).toFixed(2);
 }
 
 function formatBytesToGB(bytes) {
 	return (bytes / (1024 * 1024 * 1024)).toFixed(2);
-	return (bytes / (1024 * 1024 * 1024)).toFixed(2);
 }
 
 function calculateCpuPercentage(cpuUsage, cpuLimit) {
-	if (!cpuLimit || cpuLimit === 0) return "N/A";
-	return ((cpuUsage / cpuLimit) * 100).toFixed(2);
 	if (!cpuLimit || cpuLimit === 0) return "N/A";
 	return ((cpuUsage / cpuLimit) * 100).toFixed(2);
 }
@@ -43,23 +33,9 @@ function getStatusClass(status) {
 		default:
 			return "status-grey";
 	}
-	switch (status) {
-		case "running":
-			return "status-green";
-		case "starting":
-			return "status-orange";
-		case "error":
-			return "status-red";
-		default:
-			return "status-grey";
-	}
 }
 
 function parseTags(tags) {
-	return tags.split(",").map((tag) => {
-		const [tagName, colorClass] = tag.split(":");
-		return { tagName, colorClass: `border-2 border-${colorClass}` };
-	});
 	return tags.split(",").map((tag) => {
 		const [tagName, colorClass] = tag.split(":");
 		return { tagName, colorClass: `border-2 border-${colorClass}` };
@@ -111,20 +87,6 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 		>
 			<ToastContainer />
 
-			<AdvancedStats
-				networkMode={networkMode}
-				id={id}
-				containerName={containerName}
-				link={link}
-				icon={icon}
-				darkModeLogoColor={darkModeLogoColor}
-				lightModeLogoColor={lightModeLogoColor}
-				containerImage={image}
-				isModalOpen={isModalOpen} // Pass modal state
-				onModelClose={() => {
-					setIsModalOpen(false);
-				}}
-			/>
 			<AdvancedStats
 				networkMode={networkMode}
 				id={id}
@@ -239,30 +201,6 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 					{formatBytesToGB(mem_usage)} GB / {formatBytesToGB(mem_limit)} GB
 				</p>
 			</div>
-			{isHostNetwork ? (
-				<div className="flex items-center mt-2">
-					<BsFillHddNetworkFill className="mr-2 text-primary" />
-					<p>Host network</p>
-				</div>
-			) : (
-				<>
-					<div className="flex items-center mt-2">
-						<FaArrowUp
-							className={`network-stats ${current_net_tx !== 0 ? "pulse" : ""
-								} mr-2 text-info`}
-						/>
-						<p>{formatBytesToMB(current_net_tx)} MB/s</p>
-					</div>
-					<div className="flex items-center mt-2">
-						<FaArrowDown
-							className={`network-stats ${current_net_rx !== 0 ? "pulse" : ""
-								} mr-2 text-info`}
-						/>
-						<p>{formatBytesToMB(current_net_rx)} MB/s</p>
-					</div>
-				</>
-			)}
-
 			{isSimpleIcon ? (
 				<img
 					src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor
