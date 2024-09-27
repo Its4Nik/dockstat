@@ -191,16 +191,6 @@ function ContainerStats({ container, logoSize, darkModeLogoColor, lightModeLogoC
 					</div>
 				</>
 			)}
-			<div className="flex items-center mt-2">
-				<FaMicrochip className="mr-2 text-primary" />
-				<p>{cpuPercentage}%</p>
-			</div>
-			<div className="flex items-center mt-2">
-				<FaMemory className="mr-2 text-primary" />
-				<p>
-					{formatBytesToGB(mem_usage)} GB / {formatBytesToGB(mem_limit)} GB
-				</p>
-			</div>
 			{isSimpleIcon ? (
 				<img
 					src={`https://cdn.simpleicons.org/${simpleIconName}${lightModeLogoColor && darkModeLogoColor
