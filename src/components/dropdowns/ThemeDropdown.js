@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaRegSun, FaRegMoon } from "react-icons/fa";
 
-
 const SortDropdown = ({ value, onChange }) => {
     return (
         <div className="relative inline-block w-full">
