@@ -1,10 +1,10 @@
 <h1 align="center">🐳 Dockstat 🐳</h1>
 <p align="left">
-  Dockstat is a monitoring frontend powered 
-  by the [DockStatAPI](https://github.com/Its4Nik/dockstatapi). 
-  It provides usage statistics like CPU, RAM, and Network usage.
-  See more examples [here](/docs/MultipleThemes.md).
-  Check the documentation (WIP) [here](https://outline.itsnik.de/s/dockstat).
+  Dockstat is a monitoring frontend powered <br>
+  by the [DockStatAPI](https://github.com/Its4Nik/dockstatapi). <br>
+  It provides usage statistics like CPU, RAM, and Network usage.<br>
+  See more examples [here](/docs/MultipleThemes.md).<br>
+  Check the documentation (WIP) [here](https://outline.itsnik.de/s/dockstat).<br>
   <img align="right" src="https://github.com/user-attachments/assets/9e8728ee-95a7-4946-91af-fbd535c3f86d" width="200" alt="DockStatMockup2" />
 </p>
 
