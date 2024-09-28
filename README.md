@@ -14,8 +14,7 @@
   <img align="center" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" alt="DockStat Mockup" />
 </details>
 
-## 🖊️ Work in Progress
-
+<h1 align="center">🖊️ Work in Progress</h1>
 - [X] Refactoring
 - [X] Fix theme switcher
 - [X] WebUI for API config (Read only)
