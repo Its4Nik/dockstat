@@ -37,7 +37,7 @@
 
 ---
 
-## ⬇️ Installation Using Docker
+<h1 align="center">⬇️ Installation Using Docker</h1>
 
 ```yaml
 name: DockStat
@@ -72,19 +72,20 @@ services:
     restart: always
 ```
 
-## Configuration:
+
+<h1 align="center">Configuration</h1>
 
 Please see [Configuration.md](/docs/Configuration.md)
 
 ---
 
-## Star History
+<h1 align="center">🌟 StarHistory 🌟</h1>
 
 [![Star History Chart](https://api.star-history.com/svg?repos=its4nik/dockstat,its4nik/dockstatapi&type=Date)](https://star-history.com/#its4nik/dockstat&its4nik/dockstatapi&Date)
 
 ---
 
-## 🚫 Known Issues
+<h1 align="center">⚠ Known Issues ⚠</h1>
 
 ### Open
 
@@ -95,6 +96,3 @@ Please see [Configuration.md](/docs/Configuration.md)
 1. Theme switching only works once. See [code logic](/docs/known-issues.md#-----1-theme-switching-bug) for details.
 
 2. Adding the default theme will make other themes unusable due to not being able to select them. See [code logic](/docs/known-issues.md#-----2-theme-unavailability-issue) for details.
----
-
-Please don't judge this project too harshly—it's my first major React project. For more information, open a new issue! 😄
