@@ -6,8 +6,10 @@
   It provides usage statistics like CPU, RAM, and Network usage.<br>
   See more examples [here](/docs/MultipleThemes.md).<br>
   Check the documentation (WIP) [here](https://outline.itsnik.de/s/dockstat).<br>
-  <img align="right" src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" width="50%" alt="DockStat Mockup" />
-  <img align="left" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" width="50%" alt="DockStat Mockup" />
+  <tr>
+    <td><img align="right" src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" width="50%" alt="DockStat Mockup" /></td>
+    <td><img align="left" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" width="50%" alt="DockStat Mockup" /></td>
+  </tr>
 </p>
 <br>
 <br>
