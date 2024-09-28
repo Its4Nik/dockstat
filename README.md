@@ -1,5 +1,5 @@
 <h1 align="center">🐳 Dockstat 🐳</h1>
-<img align="right" src="https://github.com/user-attachments/assets/9e8728ee-95a7-4946-91af-fbd535c3f86d" width="400" alt="DockStatMockup2" />
+<img align="right" src="https://github.com/user-attachments/assets/9e8728ee-95a7-4946-91af-fbd535c3f86d" width="400" alt="DockStat Mockup" />
 <p align="left">
   Dockstat is a monitoring frontend powered <br>
   by the [DockStatAPI](https://github.com/Its4Nik/dockstatapi). <br>
@@ -8,7 +8,9 @@
   Check the documentation (WIP) [here](https://outline.itsnik.de/s/dockstat).<br>
 </p>
 
----
+  <p align="right">
+    <img src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" width="100%" alt="DockStat Mockup" />
+</p>
 
 ## 🖊️ Work in Progress
 
