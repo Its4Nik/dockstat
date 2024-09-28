@@ -32,7 +32,19 @@
 - [X] Exclude network mode "host" from network stats or other handling
 - [ ] Add "Secondary API Host" for high availability
 - [ ] Persistent theme/refresh rate choice
-- [X] Changable size of "Container Cards"
+- [X] Changable size of "Container Cards" 
+
+---
+
+<h1 align="center">🎁 Integrations</h1>
+
+Integrations allow you to connect external sercives to DockStat.
+
+## List:
+- [🥤 Cup](https://github.com/sergi0g/cup)
+
+To configure your integrations and see more details please visit the [wiki](https://outline.itsnik.de/doc/integrations-Agq1oL6HxF).
+
 
 ---
 
