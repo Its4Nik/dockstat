@@ -1,7 +1,8 @@
 <h1 align="center">🐳 Dockstat 🐳</h1>
 <p align="center">
   <p align="right">
-    <img src="https://github.com/user-attachments/assets/9e8728ee-95a7-4946-91af-fbd535c3f86d" width="400" alt="DockStatMockup1" />
+    <img src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" width="400" alt="DockStatMockup1" />
+    <img src="https://github.com/user-attachments/assets/9e8728ee-95a7-4946-91af-fbd535c3f86d" width="400" alt="DockStatMockup2" />
   </p>
   A Docker Monitoring Frontend
 </p>
