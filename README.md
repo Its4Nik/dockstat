@@ -5,7 +5,7 @@
   It provides usage statistics like CPU, RAM, and Network usage.<br>
   Integrations can also be enabled using optional variables.
   Check the documentation (WIP) <a href="https://outline.itsnik.de/s/dockstat">here</a> for more information.<br>
-  To see more screenshots please visit the wiki<a href="/docs/MultipleThemes.md">here</a>.<br>
+  To see more screenshots please visit the wiki <a href="/docs/MultipleThemes.md">here</a>.<br>
   Or <a href="/docs/MultipleThemes.md">here</a>.
 </p>
 
