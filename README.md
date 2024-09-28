@@ -17,7 +17,7 @@
 
 <br><br><br><br><br><br><br>
 
-<h1 align="right">🖊️ Work in Progress</h1>
+<h1 align="center">🖊️ Work in Progress</h1>
 
 - [X] Refactoring
 - [X] Fix theme switcher
