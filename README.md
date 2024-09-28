@@ -13,8 +13,9 @@
 <br>
 <br>
 <br>
-<img align="center" src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" width="50%" alt="DockStat Mockup" />
-<img align="center" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" width="50%" alt="DockStat Mockup" />
+<img align="center" src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" alt="DockStat Mockup" />
+<img align="center" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" alt="DockStat Mockup" />
+
 ## 🖊️ Work in Progress
 
 - [X] Refactoring
