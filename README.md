@@ -9,8 +9,8 @@
 </p>
 <br>
 
-<img align="right" src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" width="50%" alt="DockStat Mockup" />
-<img align="left" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" width="50%" alt="DockStat Mockup" />
+<img align="right" src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" height="50%" alt="DockStat Mockup" />
+<img align="left" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" height="50%" alt="DockStat Mockup" />
 
 <br>
 <br>
