@@ -15,9 +15,10 @@
 </details>
 
 
-<br><br><br><br>
+<br><br><br><br><br><br><br>
 
 <h1 align="center">🖊️ Work in Progress</h1>
+
 - [X] Refactoring
 - [X] Fix theme switcher
 - [X] WebUI for API config (Read only)
