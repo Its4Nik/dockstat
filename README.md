@@ -1,19 +1,23 @@
 <h1 align="center">🐳 Dockstat 🐳</h1>
-<p align="center">
-  A Docker Monitoring Frontend
+<img align="right" src="https://github.com/user-attachments/assets/9e8728ee-95a7-4946-91af-fbd535c3f86d" width="400" alt="DockStat Mockup" />
+<p align="left">
+  Dockstat is a monitoring frontend powered by the <a href="https://github.com/Its4Nik/dockstatapi">DockStatAPI</a>. <br>
+  It provides usage statistics like CPU, RAM, and Network usage.<br>
+  Integrations can also be enabled using optional variables.
+  Check the documentation (WIP) <a href="https://outline.itsnik.de/s/dockstat">here</a> for more information.<br>
+  To see more screenshots please visit the wiki <a href="https://outline.itsnik.de/s/dockstat/doc/themes-BFhN6ZBbYx">here</a>.<br>
 </p>
 
-Dockstat is a monitoring frontend powered by the [DockStatAPI](https://github.com/Its4Nik/dockstatapi). It provides usage statistics like CPU, RAM, and Network usage.
+<details> 
+<summary>Mockups</summary>
+  <img align="center" src="https://github.com/user-attachments/assets/4ffc8cc0-9a7b-4a09-837a-b0ba65a1c806" alt="DockStat Mockup" />
+  <img align="center" src="https://github.com/user-attachments/assets/723b2186-b8b4-4eea-aa3e-3f68db023338" alt="DockStat Mockup" />
+</details>
 
-![Example, Night Theme](/docs/screenshots/night.png)
 
-See more examples [here](/docs/MultipleThemes.md).
+<br><br><br><br><br><br><br>
 
-Check the documentation (WIP) [here](https://outline.itsnik.de/s/dockstat).
-
----
-
-## 🖊️ Work in Progress
+<h1 align="center">🖊️ Work in Progress</h1>
 
 - [X] Refactoring
 - [X] Fix theme switcher
@@ -34,13 +38,19 @@ Check the documentation (WIP) [here](https://outline.itsnik.de/s/dockstat).
 
 ---
 
-## Plugins
+<h1 align="center">🎁 Integrations</h1>
 
-- [cup](https://github.com/sergi0g/cup)
+Integrations allow you to connect external sercives to DockStat.
+
+## List:
+- [🥤 Cup](https://github.com/sergi0g/cup)
+
+To configure your integrations and see more details please visit the [wiki](https://outline.itsnik.de/doc/integrations-Agq1oL6HxF).
+
 
 ---
 
-## ⬇️ Installation Using Docker
+<h1 align="center">⬇️ Installation Using Docker</h1>
 
 ```yaml
 name: DockStat
@@ -75,19 +85,20 @@ services:
     restart: always
 ```
 
-## Configuration:
+
+<h1 align="center">Configuration</h1>
 
 Please see [Configuration.md](/docs/Configuration.md)
 
 ---
 
-## Star History
+<h1 align="center">🌟 StarHistory 🌟</h1>
 
 [![Star History Chart](https://api.star-history.com/svg?repos=its4nik/dockstat,its4nik/dockstatapi&type=Date)](https://star-history.com/#its4nik/dockstat&its4nik/dockstatapi&Date)
 
 ---
 
-## 🚫 Known Issues
+<h1 align="center">⚠ Known Issues ⚠</h1>
 
 ### Open
 
@@ -98,6 +109,3 @@ Please see [Configuration.md](/docs/Configuration.md)
 1. Theme switching only works once. See [code logic](/docs/known-issues.md#-----1-theme-switching-bug) for details.
 
 2. Adding the default theme will make other themes unusable due to not being able to select them. See [code logic](/docs/known-issues.md#-----2-theme-unavailability-issue) for details.
----
-
-Please don't judge this project too harshly—it's my first major React project. For more information, open a new issue! 😄
